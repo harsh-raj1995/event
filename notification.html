@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notifications | EventSphere</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #f5f7fb;
+    }
+
+    /* HEADER */
+    .header {
+      height: 70px;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 30px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .title {
+      font-size: 22px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    /* CLOSE ICON */
+    .close {
+      font-size: 22px;
+      cursor: pointer;
+      color: #666;
+      text-decoration: none;
+    }
+
+    .close:hover {
+      color: #ff3d57;
+    }
+
+    /* NOTIFICATION CONTAINER */
+    .container {
+      max-width: 720px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    /* NOTIFICATION CARD */
+    .notification {
+      background: #ffffff;
+      padding: 18px;
+      border-radius: 16px;
+      margin-bottom: 18px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      border-left: 5px solid transparent;
+      transition: transform 0.2s ease;
+    }
+
+    .notification:hover {
+      transform: translateY(-4px);
+    }
+
+    .notification.unread {
+      border-left: 5px solid #ff3d57;
+      background: linear-gradient(135deg, #e3f2fd, #fce4ec);
+    }
+
+    .notification h4 {
+      font-size: 16px;
+      margin-bottom: 6px;
+      color: #222;
+    }
+
+    .notification p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    .time {
+      display: block;
+      margin-top: 8px;
+      font-size: 12px;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="title">Notifications</div>
+    <!-- Back / Close -->
+    <a href="index.html" class="close">✖</a>
+  </div>
+
+  <!-- NOTIFICATIONS -->
+  <div class="container">
+
+    <div class="notification unread">
+      <h4>🎉 Event Booking Confirmed</h4>
+      <p>
+        Your <strong>seat is officially reserved</strong>!  
+        We’re excited to welcome you — get ready for an unforgettable event experience.
+      </p>
+      <span class="time">Just now</span>
+    </div>
+
+    <div class="notification unread">
+      <h4>🚀 New Event Live Now</h4>
+      <p>
+        <strong>Tech Conference 2026</strong> is now open for registration.  
+        Discover expert speakers, exciting sessions, and secure your spot today.
+      </p>
+      <span class="time">1 hour ago</span>
+    </div>
+
+    <div class="notification">
+      <h4>⏰ Event Reminder</h4>
+      <p>
+        Don’t forget! Your <strong>Music Festival</strong> begins tomorrow.  
+        Get ready for an energetic, fun-filled celebration 🎶
+      </p>
+      <span class="time">Yesterday</span>
+    </div>
+
+    <div class="notification">
+      <h4>💳 Payment Successful</h4>
+      <p>
+        Your payment has been <strong>successfully completed</strong>.  
+        Thank you for booking with EventSphere — your event access is confirmed.
+      </p>
+      <span class="time">2 days ago</span>
+    </div>
+
+  </div>
+
+</body>
+</html>
