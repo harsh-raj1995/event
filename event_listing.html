@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Event Management Platform</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    /* ================= LOADER ================= */
+    .loader-screen {
+      position: fixed;
+      inset: 0;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 9999;
+    }
+
+    .loader-screen img {
+      width: 140px;
+      margin-bottom: 15px;
+    }
+
+    .loader-screen p {
+      color: #666;
+      font-weight: 500;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* ================= HEADER ================= */
+    header {
+      position: sticky;
+      top: 0;
+      background: #ffffff;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    header .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header img {
+      width: 140px;
+    }
+    /* ================= BUSINESS BUTTON ================= */
+    .business-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: transparent;
+  border: 1.5px linear-gradient(90deg, #a95a10, #2563eb);
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+  color: linear-gradient(90deg, #a95a10, #2563eb);
+  transition: all 0.25s ease;
+}
+
+.business-btn:hover {
+  background:linear-gradient(90deg, #a95a10, #2563eb);
+  color: #fff;
+}
+
+.business-icon {
+  margin-right: 0%;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(90deg, #a95a10, #2563eb);
+  mask: url("https://imgs.search.brave.com/-_fXzL8MTJtMDEBlT-D4NyS3CSMucUDAybrD6oXFDE0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bG9nb2dlbmllLmNv/bS9pY29ucy9wcmV2/aWV3LzExMjU1") no-repeat center;
+  -webkit-mask: url("https://imgs.search.brave.com/-_fXzL8MTJtMDEBlT-D4NyS3CSMucUDAybrD6oXFDE0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bG9nb2dlbmllLmNv/bS9pY29ucy9wcmV2/aWV3LzExMjU1") no-repeat center;
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  transition: background 0.25s ease;
+}
+
+.business-btn:hover .business-icon {
+  background: #fff;
+}
+
+    /* ================= HERO ================= */
+    .hero {
+      height: 65vh;
+      background: linear-gradient(270deg, #a95a10, #2563eb),
+        url('https://imgs.search.brave.com/hgZvNslAHIxKRw6OiEhbopaM0hwGHWZZ5KtPA4u6R9U/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9ibG9nLmluZXZlbnQuY29tL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDI0LzEwL0V4cGVyaWVuZGlhbC1FdmVudHMtSW5ub3ZhdGl2ZS1JZGVhcy1FeGFtcGxlcy1hbmQtVGlwcy1CbG9nLUltYWdlcy0wMS0xOTI0eDEwODMud2VicA')
+        center / cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    /* ================= PROJECTS ================= */
+    .section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.15);
+    }
+
+    .card img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+    }
+
+    .card .info {
+      padding: 18px;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #666;
+    }
+
+    /* ================= FOOTER ================= */
+    footer {
+      background: linear-gradient(270deg, #a95a10, #2563eb);
+      color: #eee;
+      padding: 50px 20px 30px;
+      margin-top: 60px;
+    }
+
+    footer .container {
+      max-width: 1200px;
+      margin: auto;
+      text-align: center;
+    }
+
+    footer a {
+      color: #bbb;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+
+    footer p {
+      margin-top: 15px;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader-screen" id="loader">
+  <img src="https://imgs.search.brave.com/-_fXzL8MTJtMDEBlT-D4NyS3CSMucUDAybrD6oXFDE0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bG9nb2dlbmllLmNv/bS9pY29ucy9wcmV2/aWV3LzExMjU1" alt="Loading">
+  <p>Please wait…</p>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="container">
+    <img src="https://imgs.search.brave.com/-_fXzL8MTJtMDEBlT-D4NyS3CSMucUDAybrD6oXFDE0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bG9nb2dlbmllLmNv/bS9pY29ucy9wcmV2/aWV3LzExMjU1" alt="Event Logo">
+    <button class="business-btn">
+      <div class="business-icon"></div>
+      For Business
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Our Event Projects</h1>
+</section>
+
+<!-- PROJECTS -->
+<section class="section">
+  <div class="projects-grid">
+
+    <div class="card">
+      <img src="https://imgs.search.brave.com/hgZvNslAHIxKRw6OiEhbopaM0hwGHWZZ5KtPA4u6R9U/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9ibG9n/LmluZXZlbnQuY29t/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDI0/LzEwL0V4cGVyaWVu/dGlhbC1FdmVudHMt/SW5ub3ZhdGl2ZS1J/ZGVhcy1FeGFtcGxl/cy1hbmQtVGlwcy1C/bG9nLUltYWdlcy0w/MS0xOTI0eDEwODMu/d2VicA" alt="picture recognition">
+      <div class="info">
+        <h3>Picture Recognition </h3>
+        <p>19/08/2023</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://imgs.search.brave.com/hTfWyDFXBCj7NB3O5YN0M9dbHx3OHYQbTedh8uPB7iE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/ZXhvcmRvLmNvbS9o/cy1mcy9odWJmcy9J/bXBvcnRlZF9CbG9n/X01lZGlhL2lubm92/YXRpdmVfZXZlbnRf/aWRlYXNfaW5kb29y/X3BpY25pYy0xLmpw/Zz93aWR0aD03NjYm/aGVpZ2h0PTM0MCZu/YW1lPWlubm92YXRp/dmVfZXZlbnRfaWRl/YXNfaW5kb29yX3Bp/Y25pYy0xLmpwZw" alt="">
+      <div class="info">
+        <h3>Nirmal Milan Party</h3>
+        <p>25/11/2023</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://imgs.search.brave.com/XXQEcN8YhJuj4BKcNi36dZfAzvg231Fkjs1vdhDuXXM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9ib29t/c2V0LmNvbS93cC1j/b250ZW50L3VwbG9h/ZHMvMjAyNS8wNy9F/dmVudC0xLnBuZw" alt="">
+      <div class="info">
+        <h3>Virtual Reality</h3>
+        <p>21/10/2023</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://imgs.search.brave.com/07-sIHBuXcyO6dMPo2HdnZ6espSSeL6fYQYN2pl5FsQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zeHN3/LmNvbS93cC1jb250/ZW50L3VwbG9hZHMv/MjAyNC8wNC8wMy0x/Ml9fXzE1LXNjYWxl/ZC5qcGc_cXVhbGl0/eT0xMDAmdz0xNDQw" alt="">
+      <div class="info">
+        <h3>Zenovasia</h3>
+        <p>29/10/2023</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://imgs.search.brave.com/dRExFxnfueBl3xQP6p4OF_wXc2Y5M6FELJkzGkVIzCs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9ibG9n/LmluZXZlbnQuY29t/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDI0/LzEwL0V4cGVyaWVu/dGlhbC1FdmVudHMt/SW5ub3ZhdGl2ZS1J/ZGVhcy1FeGFtcGxl/cy1hbmQtVGlwcy1C/bG9nLUltYWdlcy0w/NC0xOTI0eDEwODMu/d2VicA" alt="">
+      <div class="info">
+        <h3>Runnathon</h3>
+        <p>23/03/2024</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://imgs.search.brave.com/jfMq_L0SxaSyzvCsrQsZwB36lqLAA1wFWY6f0A8aTRQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Y2VzLnRlY2gvbWVk/aWEvY2d5a3lobDUv/a2V5bm90ZS1iYWNr/Z3JvdW5kXzMyMDB4/MTYwMC5qcGc_d2lk/dGg9MTAwMCZoZWln/aHQ9NTAwJmZvcm1h/dD13ZWJwJnF1YWxp/dHk9ODA" alt="">
+      <div class="info">
+        <h3>CES Innovators</h3>
+        <p>19/09/2023</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div>
+      <a href="#"><i class="fa fa-facebook"></i></a>
+      <a href="#"><i class="fa fa-instagram"></i></a>
+      <a href="#"><i class="fa fa-whatsapp"></i></a>
+      <a href="#"><i class="fa fa-linkedin"></i></a>
+    </div>
+    <p>© 2026 Event Management | All Rights Reserved</p>
+  </div>
+</footer>
+
+<script>
+  window.onload = function () {
+    setTimeout(() => {
+      document.getElementById('loader').classList.add('hidden');
+    }, 1500);
+  };
+</script>
+
+</body>
+</html>
