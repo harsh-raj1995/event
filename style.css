@@ -1,0 +1,229 @@
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ================= BASE ================= */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top, #0f0f0f 0%, #050505 60%, #000 100%);
+    color: white;
+    overflow-x: hidden;
+}
+
+/* ================= HEADER / NAVBAR ================= */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 60px;
+    display: flex;
+    align-items: center;              /* 🔥 vertical center */
+    justify-content: space-between;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* NAV RIGHT */
+nav > div {
+    display: flex;
+    align-items: center;              /* 🔥 centers links + button */
+    gap: 30px;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+nav a:hover {
+    opacity: 1;
+}
+
+/* LOGIN BUTTON */
+.add-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 42px;
+    padding: 0 22px;
+    background: linear-gradient(90deg, #ffae00, #ff5f00);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* ================= SEARCH ================= */
+.search-form {
+    display: flex;
+    gap: 10px;
+    width: 40%;
+}
+
+.search-form input {
+    flex: 1;
+    padding: 10px 16px;
+    font-size: 16px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+}
+
+.search-form button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    background-color: #1d1e20;
+    color: #fafafa;
+}
+
+.search-form button:hover {
+    background-color: #ffaa00;
+}
+
+/* ================= HERO ================= */
+.hero {
+    text-align: center;
+    padding-top: 180px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.hero h1 {
+    font-size: 68px;
+    font-weight: 700;
+}
+
+.gradient {
+    background: linear-gradient(90deg, #ffaa00, #00ffd5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    margin-top: 20px;
+    font-size: 18px;
+    opacity: 0.7;
+}
+
+/* ================= HERO BUTTONS ================= */
+.hero-buttons {
+    margin-top: 35px;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, #ffae00, #ff5f00);
+    border: none;
+    padding: 14px 26px;
+    border-radius: 12px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 14px 26px;
+    border-radius: 12px;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* ================= CARDS ================= */
+.cards {
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 280px;
+    padding: 25px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    border-color: #ffaa00;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+/* ================= BLUR BACKGROUND ================= */
+.blur1,
+.blur2 {
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    filter: blur(140px);
+    z-index: -1;
+}
+
+.blur1 {
+    background: #ff9900;
+    top: 100px;
+    left: -100px;
+}
+
+.blur2 {
+    background: #00ffd5;
+    bottom: -100px;
+    right: -120px;
+}
+
+/* ================= ANIMATION ================= */
+.hero h1,
+.hero p,
+.hero-buttons,
+.cards {
+    animation: fadeUp 1.3s ease forwards;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
