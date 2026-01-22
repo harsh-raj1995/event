@@ -227,3 +227,14 @@ nav a:hover {
         transform: translateY(0);
     }
 }
+
+/* ================= FOOTER ================= */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    margin-top: 50px;
+    font-size: 14px;
+    opacity: 0.7;
+}
