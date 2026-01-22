@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HR Events | Event Management Platform</title>
+
+  <!-- SEO -->
+  <meta name="description" content="We design impactful HR and corporate events that boost engagement, teamwork, and productivity." />
+  <meta name="keywords" content="HR Events, Corporate Events, Team Building, Event Management" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="HR Events | Event Management Platform" />
+  <meta property="og:description" content="Creative HR and corporate event solutions tailored for modern organizations." />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    /* Loader */
+    .loader {
+      position: fixed;
+      inset: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+   .hidden { display: none; }
+
+    /* business button */
+.business-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: transparent;
+  border: 1.5px linear-gradient(90deg, #a95a10, #2563eb);
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+  color: linear-gradient(90deg, #a95a10, #2563eb);
+  transition: all 0.25s ease;
+}
+
+.business-btn:hover {
+  background:linear-gradient(90deg, #a95a10, #2563eb);
+  color: #fff;
+}
+
+.business-icon {
+  margin-right: 0%;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(90deg, #a95a10, #2563eb);
+  mask: url("https://imgs.search.brave.com/-_fXzL8MTJtMDEBlT-D4NyS3CSMucUDAybrD6oXFDE0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bG9nb2dlbmllLmNv/bS9pY29ucy9wcmV2/aWV3LzExMjU1") no-repeat center;
+  -webkit-mask: url("https://imgs.search.brave.com/-_fXzL8MTJtMDEBlT-D4NyS3CSMucUDAybrD6oXFDE0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bG9nb2dlbmllLmNv/bS9pY29ucy9wcmV2/aWV3LzExMjU1") no-repeat center;
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  transition: background 0.25s ease;
+}
+
+.business-btn:hover .business-icon {
+  background: #fff;
+}
+
+    /* Header */
+    header {
+      padding: 5px 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header img {
+      width: 140px;
+    }
+
+    /* Hero */
+    .hero {
+      height: 50vh;
+      background:
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url("https://imgs.search.brave.com/jfMq_L0SxaSyzvCsrQsZwB36lqLAA1wFWY6f0A8aTRQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Y2VzLnRlY2gvbWVk/aWEvY2d5a3lobDUv/a2V5bm90ZS1iYWNr/Z3JvdW5kXzMyMDB4/MTYwMC5qcGc_d2lk/dGg9MTAwMCZoZWln/aHQ9NTAwJmZvcm1h/dD13ZWJwJnF1YWxp/dHk9ODA")center / cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      padding: 20px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+    }
+
+    /* Content */
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+    }
+
+    .content-grid h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .content-grid p {
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      background: #f7f7f7;
+      padding: 25px;
+      border-radius: 12px;
+    }
+
+    .sidebar h3 {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .sidebar ul {
+      list-style: none;
+    }
+
+    .sidebar li {
+      padding: 8px 0;
+      font-size: 0.95rem;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 20px;
+      background: #2563eb;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(270deg, #a95a10, #2563eb);
+      color: #ccc;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    footer a {
+      color: #bbb;
+      margin: 0 8px;
+    }
+
+    @media (max-width: 900px) {
+      .content-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Loader -->
+<div class="loader" id="loader">
+  <p>Loading event details…</p>
+</div>
+
+<!-- Header -->
+<header>
+  <img src="https://imgs.search.brave.com/-_fXzL8MTJtMDEBlT-D4NyS3CSMucUDAybrD6oXFDE0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bG9nb2dlbmllLmNv/bS9pY29ucy9wcmV2/aWV3LzExMjU1" alt="Logo">
+   <button class="business-btn">
+      <div class="business-icon"></div>
+      For Business
+    </button>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <h1>CES Innovators</h1>
+</section>
+
+<!-- Content -->
+<section class="container">
+  <div class="content-grid">
+
+    <div>
+      <h2>About This Event</h2>
+      <p>
+        Our CES Innovators event was crafted to showcase cutting-edge technologies,
+        foster innovation, and drive collaboration among industry leaders.
+      </p>
+
+      <p>
+        Each event is customized to align with your organization’s goals, ensuring
+        meaningful participation and measurable outcomes.
+      </p>
+    </div>
+
+    <aside class="sidebar">
+      <h3>Event Highlights</h3>
+      <ul>
+        <li>✔ Team Building Activities</li>
+        <li>✔ Leadership Workshops</li>
+        <li>✔ Employee Engagement</li>
+        <li>✔ Corporate Celebrations</li>
+      </ul>
+
+      <a href="#" class="cta-btn">Enquire Now</a>
+    </aside>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div>
+    <a href="#"><i class="fa fa-facebook"></i></a>
+    <a href="#"><i class="fa fa-instagram"></i></a>
+    <a href="#"><i class="fa fa-linkedin"></i></a>
+  </div>
+  <p>© 2026 Event Management Platform</p>
+</footer>
+
+<script>
+  window.onload = () => {
+    setTimeout(() => {
+      document.getElementById('loader').classList.add('hidden');
+    }, 1200);
+  };
+</script>
+
+</body>
+</html>
