@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body>
+    <div class="loader-screen" id="loader">
+    <img src="https://imgs.search.brave.com/-_fXzL8MTJtMDEBlT-D4NyS3CSMucUDAybrD6oXFDE0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bG9nb2dlbmllLmNv/bS9pY29ucy9wcmV2/aWV3LzExMjU1" alt="Loading">
+    <p>Please wait…</p>
+    </div>
+
     <header>
 
     <div>
@@ -60,5 +65,12 @@
     </div>
 </div>
 </div>
+<script>
+  window.onload = function () {
+    setTimeout(() => {
+      document.getElementById('loader').classList.add('hidden');
+    }, 1500);
+  };
+</script>
 </body>
 </html>

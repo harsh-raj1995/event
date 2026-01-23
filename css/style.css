@@ -8,7 +8,7 @@
 /* ================= BASE ================= */
 body {
     font-family: 'Poppins', sans-serif;
-    background: radial-gradient(circle at top, #0f0f0f 0%, #050505 60%, #000 100%);
+    background: radial-gradient(circle at top, #000000 0%, #191919 60%, #252525 100%);
     color: white;
     overflow-x: hidden;
 }
@@ -116,7 +116,7 @@ nav a:hover {
 }
 
 .gradient {
-    background: linear-gradient(90deg, #ffaa00, #00ffd5);
+    background: linear-gradient(110deg, #ffaa00, #1115ef);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -204,7 +204,7 @@ nav a:hover {
 }
 
 .blur2 {
-    background: #00ffd5;
+    background: #024dd8;
     bottom: -100px;
     right: -120px;
 }

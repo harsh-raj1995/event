@@ -10,7 +10,30 @@ body {
     background: #ffffff;
     color: #111111;
 }
+.loader-screen {
+      position: fixed;
+      inset: 0;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 9999;
+    }
 
+    .loader-screen img {
+      width: 140px;
+      margin-bottom: 15px;
+    }
+
+    .loader-screen p {
+      color: #666;
+      font-weight: 500;
+    }
+
+    .hidden {
+      display: none;
+    }
 /* ================= HEADER ================= */
 header {
     position: fixed;
@@ -122,7 +145,7 @@ header {
     color: white;
     font-weight: 600;
     cursor: pointer;
-    job-transition: transform 0.2s ease;
+    -moz-transition: transform 0.2s ease;
 }
 
 .add-btn:hover {
