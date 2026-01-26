@@ -7,12 +7,22 @@
 
 /* ================= BASE ================= */
 body {
-    
     font-family: 'Poppins', sans-serif;
+
+    /* Fixed background */
     background: radial-gradient(circle at top, #0f0f0f 0%, #050505 60%, #000 100%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+
     color: white;
+
+    /* Enable scrolling for content */
+    min-height: 100vh;
+    overflow-y: auto;
     overflow-x: hidden;
 }
+
 
 /* ================= HEADER ================= */
 header {
@@ -285,7 +295,7 @@ section {
 /* ================= BLUR BACKGROUND ================= */
 .blur1,
 .blur2 {
-    position: absolute;
+    position: fixed;
     width: 450px;
     height: 450px;
     border-radius: 50%;
