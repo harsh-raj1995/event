@@ -7,20 +7,21 @@
 
 /* ================= BASE ================= */
 body {
+    
     font-family: 'Poppins', sans-serif;
-    background: radial-gradient(circle at top, #000000 0%, #191919 60%, #252525 100%);
+    background: radial-gradient(circle at top, #0f0f0f 0%, #050505 60%, #000 100%);
     color: white;
     overflow-x: hidden;
 }
 
-/* ================= HEADER / NAVBAR ================= */
+/* ================= HEADER ================= */
 header {
     position: fixed;
     top: 0;
     width: 100%;
     padding: 20px 60px;
     display: flex;
-    align-items: center;              /* 🔥 vertical center */
+    align-items: center;
     justify-content: space-between;
     backdrop-filter: blur(10px);
     background: rgba(0, 0, 0, 0.6);
@@ -30,58 +31,36 @@ header {
 .logo {
     font-size: 22px;
     font-weight: 700;
-    letter-spacing: 1px;
 }
 
-/* NAV RIGHT */
-nav > div {
-    display: flex;
-    align-items: center;              /* 🔥 centers links + button */
-    gap: 30px;
-}
-
+/* ================= NAV ================= */
 .nav-right {
     display: flex;
     align-items: center;
+    gap: 25px;
 }
 
-nav a {
+.nav-right a {
     color: white;
     text-decoration: none;
     font-size: 14px;
-    opacity: 0.8;
+    opacity: 0.75;
 }
 
-nav a:hover {
+.nav-right a:hover {
     opacity: 1;
-}
-
-/* LOGIN BUTTON */
-.add-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 42px;
-    padding: 0 22px;
-    background: linear-gradient(90deg, #ffae00, #ff5f00);
-    border: none;
-    border-radius: 10px;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
 }
 
 /* ================= SEARCH ================= */
 .search-form {
     display: flex;
     gap: 10px;
-    width: 40%;
+    width: 380px;
 }
 
 .search-form input {
     flex: 1;
     padding: 10px 16px;
-    font-size: 16px;
     border-radius: 20px;
     border: none;
     outline: none;
@@ -89,17 +68,36 @@ nav a:hover {
 
 .search-form button {
     padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
     border-radius: 20px;
     border: none;
+    background: #1d1e20;
+    color: white;
     cursor: pointer;
-    background-color: #1d1e20;
-    color: #fafafa;
 }
 
 .search-form button:hover {
-    background-color: #ffaa00;
+    background: #ffaa00;
+}
+
+/* ================= BUTTONS ================= */
+.add-btn,
+.btn-primary {
+    background: linear-gradient(90deg, #ffae00, #ff5f00);
+    border: none;
+    padding: 12px 26px;
+    border-radius: 12px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 12px 26px;
+    border-radius: 12px;
+    color: white;
+    cursor: pointer;
 }
 
 /* ================= HERO ================= */
@@ -111,77 +109,175 @@ nav a:hover {
 }
 
 .hero h1 {
-    font-size: 68px;
+    font-size: 60px;
     font-weight: 700;
 }
 
 .gradient {
-    background: linear-gradient(110deg, #ffaa00, #1115ef);
+    background: linear-gradient(90deg, #ffaa00, #00ffd5);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .hero p {
     margin-top: 20px;
-    font-size: 18px;
+    font-size: 16px;
     opacity: 0.7;
+    line-height: 1.6;
 }
 
-/* ================= HERO BUTTONS ================= */
 .hero-buttons {
     margin-top: 35px;
 }
 
-.btn-primary {
-    background: linear-gradient(90deg, #ffae00, #ff5f00);
-    border: none;
-    padding: 14px 26px;
-    border-radius: 12px;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-    margin-right: 15px;
-}
-
-.btn-secondary {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 14px 26px;
-    border-radius: 12px;
-    color: white;
-    font-weight: 500;
-    cursor: pointer;
+/* ================= SECTIONS ================= */
+section {
+    margin-top: 100px;
 }
 
 /* ================= CARDS ================= */
-.cards {
-    margin-top: 70px;
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    flex-wrap: wrap;
-}
-
+/* ================= FEATURE CARDS ================= */
 .card {
-    width: 280px;
-    padding: 25px;
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    transition: 0.3s;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    border-radius: 18px;   /* 👈 THIS is the key change */
+    padding: 28px 24px;
+
+    min-height: 160px;     /* 👈 gives it a boxy feel */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    transition: 0.3s ease;
 }
 
 .card:hover {
     transform: translateY(-6px);
     border-color: #ffaa00;
 }
+.card {
+    min-height: 180px;
+    border-radius: 16px;
+}
+.card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04);
+    pointer-events: none;
+}
 
-.card h3 {
+
+/* ================= WHY EVENTLY ================= */
+.grid {
+    display: grid;
+    gap: 30px;
+}
+
+.card i.icon {
+    font-size: 26px;
+    color: #ffaa00;
+}
+
+/* ================= HOW IT WORKS ================= */
+.how-it-works {
+    margin-top: 120px;
+    text-align: center;
+}
+
+.how-it-works h2 {
+    font-size: 36px;
+    margin-bottom: 60px;
+}
+
+/* Steps container */
+.how-it-works .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 40px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* Individual step */
+.how-it-works .step-box {
+    padding: 35px 28px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: 0.3s ease;
+}
+
+.how-it-works .step-box:hover {
+    transform: translateY(-6px);
+    border-color: #ffaa00;
+}
+
+/* Step number */
+.how-it-works .step {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    background: linear-gradient(90deg, #ffae00, #ff5f00);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #000;
+    font-size: 18px;
+}
+
+/* Titles */
+.how-it-works h3 {
+    font-size: 18px;
     margin-bottom: 10px;
 }
 
-.card p {
+/* Description */
+.how-it-works p {
+    font-size: 14px;
+    opacity: 0.7;
+    line-height: 1.6;
+}
+
+
+/* ================= FINAL CTA ================= */
+.final-cta {
+    margin: 120px auto 140px;
+    max-width: 900px;
+    padding: 70px 40px;
+    text-align: center;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.final-cta h2 {
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.final-cta p {
+    opacity: 0.7;
+    margin-bottom: 30px;
+}
+
+
+/* ================= FOOTER ================= */
+.footer {
+    text-align: center;
+    padding: 25px;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(10px);
+    margin-top: 80px;
     font-size: 14px;
     opacity: 0.7;
 }
@@ -200,41 +296,40 @@ nav a:hover {
 .blur1 {
     background: #ff9900;
     top: 100px;
-    left: -100px;
+    left: -120px;
 }
 
 .blur2 {
-    background: #024dd8;
-    bottom: -100px;
+    background: #00ffd5;
+    bottom: -120px;
     right: -120px;
 }
 
-/* ================= ANIMATION ================= */
-.hero h1,
-.hero p,
-.hero-buttons,
-.cards {
-    animation: fadeUp 1.3s ease forwards;
+/* ================= SCROLL ANIMATION ================= */
+.scroll-fade {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 1s ease;
 }
 
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.scroll-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-/* ================= FOOTER ================= */
-.footer {
-    text-align: center;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(10px);
-    margin-top: 50px;
-    font-size: 14px;
-    opacity: 0.7;
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+    header {
+        padding: 16px 20px;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .search-form {
+        width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
 }
