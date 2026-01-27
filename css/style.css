@@ -127,6 +127,7 @@ header {
     background: linear-gradient(90deg, #ffaa00, #00ffd5);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+      background-clip: text; 
 }
 
 .hero p {
