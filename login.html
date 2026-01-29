@@ -2,21 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Login | Event Platform</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="css/auth.css">
 </head>
+
 <body>
 
+<!-- ================= BLUR BACKGROUND ================= -->
+<div class="blur1"></div>
+<div class="blur2"></div>
+
+<!-- ================= AUTH ================= -->
 <div class="auth-container">
     <div class="auth-card">
-        <h2>Welcome Back</h2>
+        <h2 class="gradient">Welcome Back</h2>
         <p>Please login to your account</p>
 
         <form>
-            <input type="email" placeholder="Email" required>
+            <input type="email" placeholder="Email address" required>
             <input type="password" placeholder="Password" required>
 
-            <button type="submit" onclick="location.href='Dashboard.html'">Login</button>
+            <button type="submit" onclick="location.href='dashboard.html'">
+                Login
+            </button>
         </form>
 
         <span class="switch">

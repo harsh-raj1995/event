@@ -2,22 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sign Up</title>
+    <title>Sign Up | Event Platform</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS (same as login) -->
     <link rel="stylesheet" href="css/auth.css">
 </head>
+
 <body>
 
+<!-- ================= BLUR BACKGROUND ================= -->
+<div class="blur1"></div>
+<div class="blur2"></div>
+
+<!-- ================= AUTH ================= -->
 <div class="auth-container">
     <div class="auth-card">
-        <h2>Create Account</h2>
-        <p>Join us and get started</p>
+        <h2 class="gradient">Create Account</h2>
+        <p>Join us and explore amazing events</p>
 
         <form>
-            <input type="text" placeholder="Full Name" required>
-            <input type="email" placeholder="Email" required>
+            <input type="text" placeholder="Full name" required>
+            <input type="email" placeholder="Email address" required>
             <input type="password" placeholder="Password" required>
+            <input type="password" placeholder="Confirm password" required>
 
-            <button type="submit" onclick="location.href='login.html'">Sign Up</button>
+            <button type="submit">
+                Sign Up
+            </button>
         </form>
 
         <span class="switch">
