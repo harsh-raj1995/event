@@ -1,113 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Event Management Platform</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Projects</title>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/listing.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/listing.css">
 </head>
+
 <body>
 
-<!-- LOADER -->
-<div class="loader-screen" id="loader">
-  <img src="https://imgs.search.brave.com/-_fXzL8MTJtMDEBlT-D4NyS3CSMucUDAybrD6oXFDE0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bG9nb2dlbmllLmNv/bS9pY29ucy9wcmV2/aWV3LzExMjU1" alt="Loading">
-  <p>Please wait…</p>
+<!-- ================= BLUR BACKGROUND ================= -->
+<div class="blur1"></div>
+<div class="blur2"></div>
+
+<!-- ================= LOADER ================= -->
+<div class="loader" id="loader">
+    <p>Loading projects…</p>
 </div>
 
-<!-- HEADER -->
+<!-- ================= HEADER ================= -->
 <header>
-  <div class="container">
-    <img src="https://imgs.search.brave.com/-_fXzL8MTJtMDEBlT-D4NyS3CSMucUDAybrD6oXFDE0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bG9nb2dlbmllLmNv/bS9pY29ucy9wcmV2/aWV3LzExMjU1" alt="Event Logo">
-    <button class="business-btn">
-      <div class="business-icon"></div>
-      For Business
+    <div class="logo">Event Management</div>
+
+    <form class="search-form">
+        <input type="search" placeholder="Search events">
+        <button type="submit">Search</button>
+    </form>
+    <img src="icon/bell.png" class="icon" onclick="location.href='notification.html'">
+    <button class="add-btn">
+        Profile
+        <img src="icon/profile.png" class="profile-img">
     </button>
-  </div>
 </header>
 
-<!-- HERO -->
-<section class="hero">
-  <h1>Our Event Projects</h1>
-</section>
+<!-- ================= SIDEBAR ================= -->
+<aside class="sidebar">
+    <h2>Dashboard</h2>
+    <ul>
+        <li onclick="location.href='dashboard.html'">Home</li>
+        <li>My Events</li>
+        <li class="active">Opportunities</li>
+        <li>Participations</li>
+        <li>Settings</li>
+    </ul>
+</aside>
 
-<!-- PROJECTS -->
-<section class="section">
-  <div class="projects-grid">
+<!-- ================= MAIN ================= -->
+<main class="main">
 
-    <div class="card" onclick="location.href='event_detail.html'">
-      <img src="https://imgs.search.brave.com/hgZvNslAHIxKRw6OiEhbopaM0hwGHWZZ5KtPA4u6R9U/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9ibG9n/LmluZXZlbnQuY29t/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDI0/LzEwL0V4cGVyaWVu/dGlhbC1FdmVudHMt/SW5ub3ZhdGl2ZS1J/ZGVhcy1FeGFtcGxl/cy1hbmQtVGlwcy1C/bG9nLUltYWdlcy0w/MS0xOTI0eDEwODMu/d2VicA" alt="picture recognition">
-      <div class="info">
-        <h3>Picture Recognition </h3>
-      </div>
-    </div>
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+        <h1 class="gradient">Ongoing Events</h1>
+        <p>Innovative experiences crafted for modern organizations</p>
+    </section>
 
-    <div class="card" onclick="location.href='event_detail.html'">
-      <img src="https://imgs.search.brave.com/hTfWyDFXBCj7NB3O5YN0M9dbHx3OHYQbTedh8uPB7iE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/ZXhvcmRvLmNvbS9o/cy1mcy9odWJmcy9J/bXBvcnRlZF9CbG9n/X01lZGlhL2lubm92/YXRpdmVfZXZlbnRf/aWRlYXNfaW5kb29y/X3BpY25pYy0xLmpw/Zz93aWR0aD03NjYm/aGVpZ2h0PTM0MCZu/YW1lPWlubm92YXRp/dmVfZXZlbnRfaWRl/YXNfaW5kb29yX3Bp/Y25pYy0xLmpwZw" alt="">
-      <div class="info">
-        <h3>Nirmal Milan Party</h3>
-      </div>
-    </div>
+    <!-- ================= PROJECTS ================= -->
+    <section class="section">
+        <div class="cards">
 
-    <div class="card" onclick="location.href='event_detail.html'">
-      <img src="https://imgs.search.brave.com/XXQEcN8YhJuj4BKcNi36dZfAzvg231Fkjs1vdhDuXXM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9ib29t/c2V0LmNvbS93cC1j/b250ZW50L3VwbG9h/ZHMvMjAyNS8wNy9F/dmVudC0xLnBuZw" alt="">
-      <div class="info">
-        <h3>Virtual Reality</h3>
-      </div>
-    </div>
+            <div class="card" onclick="location.href='event_detail.html'">
+                <img src="https://imgs.search.brave.com/hgZvNslAHIxKRw6OiEhbopaM0hwGHWZZ5KtPA4u6R9U/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9ibG9n/LmluZXZlbnQuY29t/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDI0/LzEwL0V4cGVyaWVu/dGlhbC1FdmVudHMt/SW5ub3ZhdGl2ZS1J/ZGVhcy1FeGFtcGxl/cy1hbmQtVGlwcy1C/bG9nLUltYWdlcy0w/MS0xOTI0eDEwODMu/d2VicA" >
+                <h3>Picture Recognition</h3>
+            </div>
 
-    <div class="card" onclick="location.href='event_detail.html'">
-      <img src="https://imgs.search.brave.com/07-sIHBuXcyO6dMPo2HdnZ6espSSeL6fYQYN2pl5FsQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zeHN3/LmNvbS93cC1jb250/ZW50L3VwbG9hZHMv/MjAyNC8wNC8wMy0x/Ml9fXzE1LXNjYWxl/ZC5qcGc_cXVhbGl0/eT0xMDAmdz0xNDQw" alt="">
-      <div class="info">
-        <h3>Zenovasia</h3>
-      </div>
-    </div>
+            <div class="card" onclick="location.href='event_detail.html'">
+                <img src="https://imgs.search.brave.com/hTfWyDFXBCj7NB3O5YN0M9dbHx3OHYQbTedh8uPB7iE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/ZXhvcmRvLmNvbS9o/cy1mcy9odWJmcy9J/bXBvcnRlZF9CbG9n/X01lZGlhL2lubm92/YXRpdmVfZXZlbnRf/aWRlYXNfaW5kb29y/X3BpY25pYy0xLmpw/Zz93aWR0aD03NjYm/aGVpZ2h0PTM0MCZu/YW1lPWlubm92YXRp/dmVfZXZlbnRfaWRl/YXNfaW5kb29yX3Bp/Y25pYy0xLmpwZw">
+                <h3>Nirmal Milan Party</h3>
+            </div>
 
-    <div class="card" onclick="location.href='event_detail.html'">
-      <img src="https://imgs.search.brave.com/dRExFxnfueBl3xQP6p4OF_wXc2Y5M6FELJkzGkVIzCs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9ibG9n/LmluZXZlbnQuY29t/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDI0/LzEwL0V4cGVyaWVu/dGlhbC1FdmVudHMt/SW5ub3ZhdGl2ZS1J/ZGVhcy1FeGFtcGxl/cy1hbmQtVGlwcy1C/bG9nLUltYWdlcy0w/NC0xOTI0eDEwODMu/d2VicA" alt="">
-      <div class="info">
-        <h3>Runnathon</h3>
-      </div>
-    </div>
+            <div class="card" onclick="location.href='event_detail.html'">
+                <img src="https://imgs.search.brave.com/XXQEcN8YhJuj4BKcNi36dZfAzvg231Fkjs1vdhDuXXM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9ib29t/c2V0LmNvbS93cC1j/b250ZW50L3VwbG9h/ZHMvMjAyNS8wNy9F/dmVudC0xLnBuZw">
+                <h3>Virtual Reality</h3>
+            </div>
 
-    <div class="card" onclick="location.href='event_detail.html'">
-      <img src="https://imgs.search.brave.com/jfMq_L0SxaSyzvCsrQsZwB36lqLAA1wFWY6f0A8aTRQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Y2VzLnRlY2gvbWVk/aWEvY2d5a3lobDUv/a2V5bm90ZS1iYWNr/Z3JvdW5kXzMyMDB4/MTYwMC5qcGc_d2lk/dGg9MTAwMCZoZWln/aHQ9NTAwJmZvcm1h/dD13ZWJwJnF1YWxp/dHk9ODA" alt="">
-      <div class="info">
-        <h3>CES Innovators</h3>
-      </div>
-    </div>
+            <div class="card" onclick="location.href='event_detail.html'">
+                <img src="https://imgs.search.brave.com/07-sIHBuXcyO6dMPo2HdnZ6espSSeL6fYQYN2pl5FsQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zeHN3/LmNvbS93cC1jb250/ZW50L3VwbG9hZHMv/MjAyNC8wNC8wMy0x/Ml9fXzE1LXNjYWxl/ZC5qcGc_cXVhbGl0/eT0xMDAmdz0xNDQw">
+                <h3>Zenovasia</h3>
+            </div>
 
-  </div>
-</section>
+            <div class="card" onclick="location.href='event_detail.html'">
+                <img src="https://imgs.search.brave.com/dRExFxnfueBl3xQP6p4OF_wXc2Y5M6FELJkzGkVIzCs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9ibG9n/LmluZXZlbnQuY29t/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDI0/LzEwL0V4cGVyaWVu/dGlhbC1FdmVudHMt/SW5ub3ZhdGl2ZS1J/ZGVhcy1FeGFtcGxl/cy1hbmQtVGlwcy1C/bG9nLUltYWdlcy0w/NC0xOTI0eDEwODMu/d2VicA" >
+                <h3>Runnathon</h3>
+            </div>
 
-<!-- FOOTER -->
-<footer>
-  <div class="container">
-    <div>
-      <a href="#"><i class="fa fa-facebook"></i></a>
-      <a href="#"><i class="fa fa-instagram"></i></a>
-      <a href="#"><i class="fa fa-whatsapp"></i></a>
-      <a href="#"><i class="fa fa-linkedin"></i></a>
-    </div>
-    <p>© 2026 Event Management | All Rights Reserved</p>
-  </div>
+            <div class="card" onclick="location.href='event_detail.html'">
+                <img src="https://imgs.search.brave.com/jfMq_L0SxaSyzvCsrQsZwB36lqLAA1wFWY6f0A8aTRQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Y2VzLnRlY2gvbWVk/aWEvY2d5a3lobDUv/a2V5bm90ZS1iYWNr/Z3JvdW5kXzMyMDB4/MTYwMC5qcGc_d2lk/dGg9MTAwMCZoZWln/aHQ9NTAwJmZvcm1h/dD13ZWJwJnF1YWxp/dHk9ODA">
+                <h3>CES Innovators</h3>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+    © 2026 Event Management Platform
 </footer>
 
 <script>
-  window.onload = function () {
-    setTimeout(() => {
-      document.getElementById('loader').classList.add('hidden');
-    }, 1500);
-  };
+    window.onload = () => {
+        setTimeout(() => {
+            document.getElementById("loader").style.display = "none";
+        }, 1200);
+    };
 </script>
 
 </body>

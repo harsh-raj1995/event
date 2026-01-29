@@ -1,99 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HR Events | Event Management Platform</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CES Innovators | Event Details</title>
 
-  <!-- SEO -->
-  <meta name="description" content="We design impactful HR and corporate events that boost engagement, teamwork, and productivity." />
-  <meta name="keywords" content="HR Events, Corporate Events, Team Building, Event Management" />
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="HR Events | Event Management Platform" />
-  <meta property="og:description" content="Creative HR and corporate event solutions tailored for modern organizations." />
-  <meta property="og:type" content="website" />
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/detail.css">
-
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/detail.css">
 </head>
 
 <body>
 
-<!-- Loader -->
-<div class="loader" id="loader">
-  <p>Loading event details…</p>
-</div>
+<!-- ================= BLUR BACKGROUND ================= -->
+<div class="blur1"></div>
+<div class="blur2"></div>
 
-<!-- Header -->
+<!-- ================= HEADER ================= -->
 <header>
-  <img src="https://imgs.search.brave.com/-_fXzL8MTJtMDEBlT-D4NyS3CSMucUDAybrD6oXFDE0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bG9nb2dlbmllLmNv/bS9pY29ucy9wcmV2/aWV3LzExMjU1" alt="Logo">
-   <button class="business-btn">
-      <div class="business-icon"></div>
-      For Business
+    <div class="logo">HR Events</div>
+
+    <button class="add-btn">
+        For Business
     </button>
 </header>
 
-<!-- Hero -->
+<!-- ================= HERO ================= -->
 <section class="hero">
-  <h1>CES Innovators</h1>
+    <h1 class="gradient">CES Innovators</h1>
+    <p>Showcasing cutting-edge technology and corporate innovation</p>
 </section>
 
-<!-- Content -->
+<!-- ================= CONTENT ================= -->
 <section class="container">
-  <div class="content-grid">
+    <div class="content-grid">
 
-    <div>
-      <h2>About This Event</h2>
-      <p>
-        Our CES Innovators event was crafted to showcase cutting-edge technologies,
-        foster innovation, and drive collaboration among industry leaders.
-      </p>
+        <!-- Main Content -->
+        <div class="glass-box">
+            <h2>About This Event</h2>
+            <p>
+                Our CES Innovators event was crafted to showcase cutting-edge technologies,
+                foster innovation, and drive collaboration among industry leaders.
+            </p>
+            <p>
+                Each event is customized to align with your organization’s goals, ensuring
+                meaningful participation and measurable outcomes.
+            </p>
+        </div>
 
-      <p>
-        Each event is customized to align with your organization’s goals, ensuring
-        meaningful participation and measurable outcomes.
-      </p>
+        <!-- Sidebar -->
+        <aside class="glass-box sidebar">
+            <h3>Event Highlights</h3>
+            <ul>
+                <li>✔ Team Building Activities</li>
+                <li>✔ Leadership Workshops</li>
+                <li>✔ Employee Engagement</li>
+                <li>✔ Corporate Celebrations</li>
+            </ul>
+            <button class="btn-primary">Register Now</button>
+            <button class="btn-primary">Enquire Now</button>
+        </aside>
+
     </div>
-
-    <aside class="sidebar">
-      <h3>Event Highlights</h3>
-      <ul>
-        <li>✔ Team Building Activities</li>
-        <li>✔ Leadership Workshops</li>
-        <li>✔ Employee Engagement</li>
-        <li>✔ Corporate Celebrations</li>
-      </ul>
-
-      <a href="#" class="cta-btn">Enquire Now</a>
-    </aside>
-
-  </div>
+    <button class="btn-primary" onclick="location.href='event_listing.html'">Back to Events</button>
 </section>
 
-<!-- Footer -->
-<footer>
-  <div>
-    <a href="#"><i class="fa fa-facebook"></i></a>
-    <a href="#"><i class="fa fa-instagram"></i></a>
-    <a href="#"><i class="fa fa-linkedin"></i></a>
-  </div>
-  <p>© 2026 Event Management Platform</p>
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+    © 2026 Event Management Platform
 </footer>
-
-<script>
-  window.onload = () => {
-    setTimeout(() => {
-      document.getElementById('loader').classList.add('hidden');
-    }, 1200);
-  };
-</script>
 
 </body>
 </html>
