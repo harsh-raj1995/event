@@ -217,15 +217,17 @@ header {
     left: 20px;
     width: 240px;
     height: calc(100vh - 120px);
-    padding: 25px;
-    border-radius: 18px;
-    background: rgba(255, 255, 255, 0.05);
+    padding: 22px;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.05);
     backdrop-filter: blur(14px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255,255,255,0.08);
 }
 
 .sidebar h2 {
-    margin-bottom: 20px;
+    font-size: 16px;
+    margin-bottom: 18px;
+    opacity: 0.8;
 }
 
 .sidebar ul {
@@ -233,24 +235,24 @@ header {
 }
 
 .sidebar li {
-    padding: 12px 14px;
-    border-radius: 10px;
-    margin-bottom: 10px;
+    padding: 11px 14px;
+    border-radius: 8px;
+    margin-bottom: 8px;
     cursor: pointer;
-    opacity: 0.85;
-    transition: 0.3s;
+    font-size: 14px;
+    opacity: 0.75;
+    transition: 0.25s;
 }
 
 .sidebar li:hover {
-    background: rgba(255, 170, 0, 0.15);
+    background: rgba(255,170,0,0.15);
     opacity: 1;
 }
 
 .sidebar li.active {
     background: linear-gradient(90deg, #ffae00, #ff5f00);
     color: #000;
-    font-weight: 600;
-    opacity: 1;
+    font-weight: 500;
 }
 
 /* ================= MAIN ================= */
