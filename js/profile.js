@@ -25,16 +25,6 @@ let headerEmail = document.querySelector('#headerEmail');
 let nameInput = document.querySelector('#nameInput');
 let emailInput = document.querySelector('#emailInput');
 
-// load data on page refresh
-let storedName = localStorage.getItem('name');
-let storedEmail = localStorage.getItem('email');
-
-if (storedName) {
-    headerName.textContent = storedName;
-}
-if (storedEmail) {
-    headerEmail.textContent = storedEmail;
-}
 
 // button click
 let btn = document.querySelector('.btn-primary');
