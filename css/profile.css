@@ -111,6 +111,14 @@ header {
     margin-bottom: 30px;
 }
 
+#headerName {
+    font-size: 26px;
+    font-weight: 600;
+}
+#headerEmail {
+    font-size: 14px;
+    opacity: 0.65;
+}
 .profile-header h2 {
     font-size: 26px;
     font-weight: 600;

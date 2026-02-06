@@ -42,10 +42,9 @@
     <!-- Profile Header -->
     <section class="profile-header">
         <div>
-            <h2>Harsh Raj</h2>
-            <p>harshraj@email.com</p>
+            <span id="headerName" >Harsh Raj</span><br>
+            <span id="headerEmail">harshraj@email.com</span>
         </div>
-
         <div class="role-badge">User</div>
     </section>
 
@@ -56,12 +55,12 @@
         <div class="form-grid">
             <div>
                 <label>Full Name</label>
-                <input type="text" value="Harsh Raj">
+                <input type="text" id="nameInput" placeholder="Enter name">
             </div>
 
             <div>
                 <label>Email Address</label>
-                <input type="email" value="harshraj@email.com">
+                <input type="email" id="emailInput" placeholder="Enter email">
             </div>
 
             <div>
@@ -75,7 +74,7 @@
             </div>
         </div>
 
-        <button class="btn-primary">Save Changes</button>
+        <button class="btn-primary">Update</button>
     </section>
 
     <!-- My Events Summary -->
@@ -99,6 +98,6 @@
     </section>
 
 </main>
-
+<script src="js/profile.js"></script>
 </body>
 </html>
