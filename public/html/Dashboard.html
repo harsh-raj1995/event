@@ -35,64 +35,71 @@
 
 <!-- ================= SIDEBAR ================= -->
 <aside class="sidebar">
-    <h2>Dashboard</h2>
+    <h2>Menu</h2>
     <ul>
-        <li class="active">Home</li>
-        <li>My Events</li>
-        <li onclick="location.href='event_listing.html'">Opportunities</li>
-        <li>Participations</li>
-        <li onclick="location.href='profile.html'">Profile</li>
-        <li>Settings</li>
+        <li class="active" onclick="location.href='dashboard.html'">
+            🏠 Dashboard
+        </li>
+
+        <li onclick="location.href='create.html'">
+            ➕ Create Event
+        </li>
+
+        <li onclick="location.href='my_events.html'">
+            📂 My Events
+        </li>
+
+        <li onclick="location.href='event_listing.html'">
+            🌍 All Events
+        </li>
+
+        <li onclick="location.href='notification.html'">
+            🔔 Notifications
+        </li>
+
+        <li onclick="location.href='profile.html'">
+            👤 Profile
+        </li>
+
+        <li onclick="location.href='index.html'">
+            🚪 Logout
+        </li>
     </ul>
 </aside>
 
 <!-- ================= MAIN ================= -->
 <main class="main">
 
-    <!-- Categories -->
+    <!-- ================= STATS ================= -->
     <section class="categories">
-        <div class="category-card">🎉 Social Events</div>
-        <div class="category-card">🏢 Corporate Events</div>
-        <div class="category-card">🎓 Educational Events</div>
-        <div class="category-card">🎭 Cultural Events</div>
-        <div class="category-card">🎵 Music Events</div>
-        <div class="category-card">🏃 Sports Events</div>
-    </section>
 
-    <!-- Filters -->
-    <section class="filters">
-        <button>Filters</button>
-        <button>Type</button>
-        <button>Location</button>
-        <button>Sort By</button>
-    </section>
-
-    <!-- Cards -->
-    <section class="cards">
-        <div class="card">
-            <h3>Tech Fest 2026</h3>
-            <p>Educational Event</p>
-            <span>Remote • Full Time</span>
-
-            <div class="card-footer">
-                <small>13 days left</small>
-                <button>View</button>
-            </div>
+        <div class="category-card">
+            <h3 id="totalEvents">0</h3>
+            <p>Events Created</p>
         </div>
 
-        <div class="card">
-            <h3>Startup Meetup</h3>
-            <p>Corporate Networking</p>
-            <span>Bangalore • Offline</span>
-
-            <div class="card-footer">
-                <small>7 days left</small>
-                <button>View</button>
-            </div>
+        <div class="category-card">
+            <h3 id="totalParticipants">0</h3>
+            <p>Total Participants</p>
         </div>
+
+        <div class="category-card">
+            <h3 id="totalAnnouncements">0</h3>
+            <p>Announcements Sent</p>
+        </div>
+
     </section>
 
 </main>
 
+<script>
+    const currentPage = window.location.pathname.split("/").pop();
+    document.querySelectorAll(".sidebar li").forEach(li => {
+        if (li.getAttribute("onclick")?.includes(currentPage)) {
+            li.classList.add("active");
+        }
+    });
+</script>
+<script src="../js/dashboard.js"></script>
 </body>
 </html>

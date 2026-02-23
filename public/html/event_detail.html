@@ -29,8 +29,8 @@
 
 <!-- ================= HERO ================= -->
 <section class="hero">
-    <h1 class="gradient">CES Innovators</h1>
-    <p>Showcasing cutting-edge technology and corporate innovation</p>
+    <h1 class="gradient" id="eventTitle"></h1>
+<p id="eventSubtitle"></p>
 </section>
 
 <!-- ================= CONTENT ================= -->
@@ -40,28 +40,40 @@
         <!-- Main Content -->
         <div class="glass-box">
             <h2>About This Event</h2>
-            <p>
-                Our CES Innovators event was crafted to showcase cutting-edge technologies,
-                foster innovation, and drive collaboration among industry leaders.
-            </p>
-            <p>
-                Each event is customized to align with your organization’s goals, ensuring
-                meaningful participation and measurable outcomes.
-            </p>
+            <p id="eventDescription"></p>
         </div>
 
         <!-- Sidebar -->
         <aside class="glass-box sidebar">
-            <h3>Event Highlights</h3>
-            <ul>
-                <li>✔ Team Building Activities</li>
-                <li>✔ Leadership Workshops</li>
-                <li>✔ Employee Engagement</li>
-                <li>✔ Corporate Celebrations</li>
-            </ul>
-            <button class="btn-primary">Register Now</button>
-            <button class="btn-primary">Enquire Now</button>
-        </aside>
+    <h3>Event Summary</h3>
+
+    <ul>
+        <li><strong>Category:</strong> <span id="summaryCategory"></span></li>
+        <li><strong>Location:</strong> <span id="summaryLocation"></span></li>
+        <li><strong>Date:</strong> <span id="summaryDate"></span></li>
+        <li><strong>Created By:</strong> <span id="summaryCreator"></span></li>
+    </ul>
+
+    <p style="margin-top:15px;">
+        <strong>Description:</strong>
+    </p>
+    <p id="summaryDescription" style="font-size:14px; opacity:0.7;"></p>
+
+    <div class="glass-box" style="margin-top:30px;">
+    <h3>Register for this Event</h3>
+
+    <form id="registrationForm">
+        <input type="text" id="participantName" placeholder="Full Name" required><br><br>
+        <input type="email" id="participantEmail" placeholder="Email Address" required><br><br>
+
+        <button class="btn-primary" type="submit">
+            Register
+        </button>
+    </form>
+
+    <p id="registrationMessage" style="margin-top:10px;"></p>
+</div>
+</aside>
 
     </div>
     <button class="btn-primary" onclick="location.href='event_listing.html'">Back to Events</button>
@@ -71,6 +83,6 @@
 <footer class="footer">
     © 2026 Event Management Platform
 </footer>
-
+<script src="../js/detail.js"></script>
 </body>
 </html>
