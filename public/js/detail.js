@@ -28,8 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("summaryCreator").textContent =
             event.createdBy;
 
-        document.getElementById("summaryDescription").textContent =
-            event.description;
+        // document.getElementById("summaryDescription").textContent =
+        //     event.description;
     }
 
     loadEvent();

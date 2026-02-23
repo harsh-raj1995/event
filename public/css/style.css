@@ -344,3 +344,7 @@ section {
         font-size: 42px;
     }
 }
+
+.glass-box {
+    animation: fadeUp 1s ease forwards;
+}

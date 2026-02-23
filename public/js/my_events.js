@@ -1,34 +1,48 @@
+console.log("MY EVENTS JS RUNNING");
+
 const container = document.getElementById("myEventsContainer");
 
 async function loadMyEvents() {
-    const res = await fetch("/my-events/Harsh Raj");
-    const events = await res.json();
+    try {
+        const res = await fetch("/my-events/Harsh Raj");
+        const events = await res.json();
 
-    container.innerHTML = "";
+        console.log("Fetched events:", events);
 
-    if (events.length === 0) {
-        container.innerHTML = "<p>No events created yet.</p>";
-        return;
-    }
+        container.innerHTML = "";
 
-    events.forEach(event => {
-        const card = document.createElement("div");
-        card.classList.add("card");
+        events.forEach(event => {
 
-        card.innerHTML = `
-            <div style="padding:20px;">
+            const card = document.createElement("div");
+            card.classList.add("event-card");
+
+            card.innerHTML = `
                 <h3>${event.title}</h3>
                 <p>${event.category}</p>
-                <span>${event.location} • ${event.date}</span>
-            </div>
-        `;
+                <p>${event.location} • ${event.date}</p>
 
-        card.addEventListener("click", () => {
-            window.location.href = `manage_event.html?id=${event.id}`;
+                <div class="card-footer">
+                    <button class="btn-primary manage-btn">
+                        Manage
+                    </button>
+                </div>
+            `;
+
+            const manageBtn = card.querySelector(".manage-btn");
+
+            console.log("Button found:", manageBtn);
+
+            manageBtn.addEventListener("click", () => {
+                console.log("CLICK WORKING");
+                window.location.href = `/html/manage_event.html?id=${event.id}`;
+            });
+
+            container.appendChild(card);
         });
 
-        container.appendChild(card);
-    });
+    } catch (err) {
+        console.error("ERROR:", err);
+    }
 }
 
 loadMyEvents();
