@@ -90,7 +90,9 @@ textarea:focus {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-
+#eventDescription{
+    white-space: pre-line;
+}
 .hero p {
     margin-top: 20px;
     font-size: 18px;
@@ -100,8 +102,8 @@ textarea:focus {
 /* ================= CONTENT ================= */
 .container {
     max-width: 1100px;
-    margin: auto;
     padding: 80px 40px;
+    justify-content: space-around;
 }
 
 .content-grid {
