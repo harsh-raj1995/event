@@ -64,5 +64,29 @@
     "eventId": "1771906765560",
     "name": "Ravi Raj",
     "email": "24BCS12288@CUCHD.IN"
+  },
+  {
+    "id": 1771912268091,
+    "eventId": "1771906765560",
+    "name": "Krishna Kumar Yadav",
+    "email": "24BCS80373@cuchd.in"
+  },
+  {
+    "id": 1771913932545,
+    "eventId": "1771906765560",
+    "name": "Stuti Sharma",
+    "email": "24BCS12270@cuchd.in"
+  },
+  {
+    "id": 1771917426438,
+    "eventId": "1771906765560",
+    "name": "Saar Yadav",
+    "email": "24BCS12002@cuchd.in"
+  },
+  {
+    "id": 1771917834722,
+    "eventId": "1771906765560",
+    "name": "Prashant Chaudhary ",
+    "email": "24BCS10827@cuchd.in"
   }
 ]
