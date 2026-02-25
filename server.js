@@ -143,27 +143,32 @@ app.get("/notifications", (req, res) => {
     const notifications = readData(notificationsPath);
     res.json(notifications);
 });
+
 app.get("/calender", (req, res) => {
     res.sendFile(__dirname + "/public/calender.html");
 });
 
 
-/* ================= LOGIN ROUTE ================= */
+/* ================= UPDATED LOGIN ROUTE ================= */
 app.post("/login", (req, res) => {
     const users = readData(usersPath);
     const { email, password } = req.body;
 
-    const user = users.find(u =>
-        u.email === email && u.password === password
-    );
+    // First check if email exists
+    const user = users.find(u => u.email === email);
 
-    if (user) {
-        res.json({
+    if (!user) {
+        return res.json({ status: "invalid" });
+    }
+
+    // Then check if password matches
+    if (user.password === password) {
+        return res.json({
             status: "success",
             name: user.name,
             email: user.email
         });
     } else {
-        res.json({ status: "invalid" });
+        return res.json({ status: "invalid" });
     }
 });
