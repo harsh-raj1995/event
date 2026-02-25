@@ -13,6 +13,7 @@ function loginUser(event) {
     })
     .then(res => res.json())
     .then(data => {
+        console.log("Server response:", data);   
         if (data.status === "success") {
 
             localStorage.setItem("userEmail", data.email);

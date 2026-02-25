@@ -45,7 +45,11 @@ header {
 .icon {
     width: 28px;
     cursor: pointer;
-    direction: right;
+}
+span{
+    display: flex;
+    gap: 20px;
+    align-items: center;
 }
 
 .profile-img {
@@ -186,6 +190,9 @@ header {
     margin-top: 60px;
     font-size: 14px;
     opacity: 0.7;
+    position: fixed;
+    bottom: 0%;
+    width: 100%;
 }
 
 /* ================= ANIMATION ================= */
