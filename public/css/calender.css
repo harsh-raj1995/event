@@ -7,7 +7,12 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: radial-gradient(circle at top, #0f0f0f 0%, #050505 60%, #000 100%);
+    background: radial-gradient(
+    circle at top,
+    #242424 0%,
+    #121212 50%,
+    #080808 80%,
+    #000000 100%);
     color: white;
     min-height: 100vh;
 }
@@ -22,7 +27,7 @@ header {
     justify-content: space-between;
     align-items: center;
     backdrop-filter: blur(12px);
-    background: rgba(0,0,0,0.6);
+    /* background: rgba(0,0,0,0.6); */
     z-index: 100;
 }
 
@@ -133,24 +138,13 @@ header {
     z-index: -1;
 }
 
-.blur1 {
-    background: #ff9900;
-    top: 120px;
-    left: -120px;
-}
-
-.blur2 {
-    background: #00ffd5;
-    bottom: -120px;
-    right: -120px;
-}
-
 
 .filters {
     display: flex;
     justify-content: center;
     gap: 15px;
     margin: 20px;
+    margin-top: 100px;
 }
 
 .filters select {
@@ -179,4 +173,29 @@ header {
 
 .hidden {
     display: none;
+}
+/* Make event text readable */
+.fc-daygrid-event .fc-event-main {
+    display: flex;
+    align-items: center;      /* vertical center */
+    justify-content: center;  /* horizontal center */
+    text-align: center;
+    padding: 8px;
+    height: 80%;
+    font-weight: 500;
+    font-size: 14px;
+    color: white !important;
+    white-space: normal !important;
+}
+
+/* Remove default bold cutting behavior */
+.fc-event-title {
+    white-space: normal !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.fc-daygrid-event {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
 }

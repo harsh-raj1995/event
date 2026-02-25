@@ -58,32 +58,23 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth',
-        headerToolbar: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay'
-        },
-        events: [],
-        eventClick: function(info) {
+    initialView: 'dayGridMonth',
+    headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+    },
+    events: [],
 
-            const e = info.event;
-
-            modalTitle.innerText = e.title;
-            modalDetails.innerText =
-                "Date: " + e.start.toLocaleString() +
-                "\nCategory: " + e.extendedProps.category +
-                "\nLocation: " + e.extendedProps.location +
-                "\nOrganizer: " + e.extendedProps.organizer +
-                "\nStatus: " + e.extendedProps.status;
-
-            manageBtn.onclick = () => {
-                window.location.href = `/html/manage_event.html?id=${e.id}`;
-            };
-
-            modal.classList.remove("hidden");
+    /* 🔥 ADD IT HERE */
+    eventDidMount: function(info) {
+        const dayCell = info.el.closest('.fc-daygrid-day');
+        if (dayCell) {
+            dayCell.style.backgroundColor = info.event.backgroundColor;
         }
-    });
+    }
+
+});
 
     calendar.render();
     loadEvents();

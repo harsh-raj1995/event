@@ -143,6 +143,9 @@ app.get("/notifications", (req, res) => {
     const notifications = readData(notificationsPath);
     res.json(notifications);
 });
+app.get("/calender", (req, res) => {
+    res.sendFile(__dirname + "/public/calender.html");
+});
 
 
 /* ================= LOGIN ROUTE ================= */
