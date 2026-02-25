@@ -18,6 +18,9 @@ const eventsPath = path.join(__dirname, "data", "events.json");
 const participantsPath = path.join(__dirname, "data", "participants.json");
 const notificationsPath = path.join(__dirname, "data", "notifications.json");
 
+/* ================= LOGIN USERS PATH ================= */
+const usersPath = path.join(__dirname, "data", "users.json");
+
 function readData(filePath) {
     return JSON.parse(fs.readFileSync(filePath));
 }
@@ -25,17 +28,20 @@ function readData(filePath) {
 function writeData(filePath, data) {
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 }
+
 //get all events
 app.get("/events", (req, res) => {
     const events = readData(eventsPath);
     res.json(events);
 });
+
 //get one event specific
 app.get("/events/:id", (req, res) => {
     const events = readData(eventsPath);
     const event = events.find(e => e.id == req.params.id);
     res.json(event);
 });
+
 //create event
 app.post("/events", (req, res) => {
     const events = readData(eventsPath);
@@ -55,17 +61,20 @@ app.post("/events", (req, res) => {
 
     res.json(newEvent);
 });
+
 app.get("/my-events/:user", (req, res) => {
     const events = readData(eventsPath);
     const userEvents = events.filter(e => e.createdBy == req.params.user);
     res.json(userEvents);
 });
+
 //get participants of event
 app.get("/participants/:eventId", (req, res) => {
     const participants = readData(participantsPath);
     const filtered = participants.filter(p => p.eventId == req.params.eventId);
     res.json(filtered);
 });
+
 //add participants
 app.post("/participants", (req, res) => {
     const participants = readData(participantsPath);
@@ -94,7 +103,6 @@ app.delete("/participants/:id", (req, res) => {
     res.json({ message: "Participant removed" });
 });
 
-
 //dashboard route
 app.get("/dashboard/:user", (req, res) => {
     const events = readData(eventsPath);
@@ -111,6 +119,7 @@ app.get("/dashboard/:user", (req, res) => {
         totalParticipants
     });
 });
+
 app.post("/notifications", (req, res) => {
     console.log("POST /notifications hit");
     console.log(req.body);
@@ -129,7 +138,29 @@ app.post("/notifications", (req, res) => {
 
     res.json(newNotification);
 });
+
 app.get("/notifications", (req, res) => {
     const notifications = readData(notificationsPath);
     res.json(notifications);
+});
+
+
+/* ================= LOGIN ROUTE ================= */
+app.post("/login", (req, res) => {
+    const users = readData(usersPath);
+    const { email, password } = req.body;
+
+    const user = users.find(u =>
+        u.email === email && u.password === password
+    );
+
+    if (user) {
+        res.json({
+            status: "success",
+            name: user.name,
+            email: user.email
+        });
+    } else {
+        res.json({ status: "invalid" });
+    }
 });
