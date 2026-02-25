@@ -53,5 +53,3 @@ The platform allows users to create, manage, and participate in events efficient
   - `users.json`
 
 ---
-
-## 📁 Project Structure
