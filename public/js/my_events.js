@@ -1,31 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Events</title>
+console.log("MY EVENTS JS RUNNING");
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/my_events.css">
-</head>
+const container = document.getElementById("myEventsContainer");
 
-<body>
+async function loadMyEvents() {
+    try {
+        const res = await fetch("/my-events/Harsh Raj");
+        const events = await res.json();
 
-<div class="blur1"></div>
-<div class="blur2"></div>
+        console.log("Fetched events:", events);
 
-<header>
-    <div class="logo">My Created Events</div>
-    <button class="btn-primary" onclick="location.href='create.html'">
-        + Create Event
-    </button>
-</header>
+        container.innerHTML = "";
 
-<main class="main">
-    <div class="cards" id="myEventsContainer"></div>
-</main>
+        events.forEach(event => {
 
-<script src="../js/my_events.js"></script>
+            const card = document.createElement("div");
+            card.classList.add("event-card");
 
-</body>
-</html>
+            card.innerHTML = `
+                <h3>${event.title}</h3>
+                <p>${event.category}</p>
+                <p>${event.location} • ${event.date}</p>
+
+                <div class="card-footer">
+                    <button class="btn-primary manage-btn">
+                        Manage
+                    </button>
+                </div>
+            `;
+
+            const manageBtn = card.querySelector(".manage-btn");
+
+            console.log("Button found:", manageBtn);
+
+            manageBtn.addEventListener("click", () => {
+                console.log("CLICK WORKING");
+                window.location.href = `/html/manage_event.html?id=${event.id}`;
+            });
+
+            container.appendChild(card);
+        });
+
+    } catch (err) {
+        console.error("ERROR:", err);
+    }
+}
+
+loadMyEvents();
