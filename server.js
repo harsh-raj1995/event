@@ -102,10 +102,11 @@ app.get("/dashboard/:userId", (req, res) => {
 
     const events = readData(eventsPath);
     const participants = readData(participantsPath);
+    const notifications = readData(notificationsPath);
     const users = readData(usersPath);
 
-    const userId = req.params.userId;
-    const user = users.find(u => u.id == userId);
+    const userId = parseInt(req.params.userId);
+    const user = users.find(u => u.id === userId);
 
     if (!user) {
         return res.status(404).json({ message: "User not found" });
@@ -116,21 +117,31 @@ app.get("/dashboard/:userId", (req, res) => {
     if (user.role === "admin") {
         userEvents = events;
     } else {
+        // 🔥 Match events using email (since events store createdBy as email)
         userEvents = events.filter(
-            e => e.createdById == userId
+            e => e.createdBy === user.email
         );
     }
 
+    // Get event IDs created by user
+    const userEventIds = userEvents.map(e => e.id);
+
+    // Count participants in user's events
     const totalParticipants = participants.filter(p =>
-        userEvents.some(e => e.id == p.eventId)
+        userEventIds.includes(Number(p.eventId))
+    ).length;
+
+    // 🔥 Count notifications only for user's events
+    const totalAnnouncements = notifications.filter(n =>
+        userEventIds.includes(Number(n.eventId))
     ).length;
 
     res.json({
         totalEvents: userEvents.length,
-        totalParticipants
+        totalParticipants,
+        totalAnnouncements
     });
 });
-
 // =====================================================
 // ================= PARTICIPANTS ======================
 // =====================================================
