@@ -12,7 +12,7 @@
    "name": "Harsh Raj",
    "email": "harsh@email.com",
    "password": "1234",
-   "role": "user"
+   "role": "admin"
   },
 
   {
@@ -20,6 +20,6 @@
     "name": "Akshat",
     "email": "akshat07@gmail.com",
     "password": "12345",
-    "role": "admin"
+    "role": "user"
   }
 ]
