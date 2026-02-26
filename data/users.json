@@ -1,22 +1,22 @@
 [
   {
-  "name": "Pranad",
-  "email": "pav@email.com",
-  "password": "pav123",
-  "role": "admin"
+   "name": "Pranad",
+   "email": "pav@email.com",
+   "password": "pav123",
+   "role": "admin"
   },
 
   {
-  "name": "Harsh Raj",
-  "email": "harsh@email.com",
-  "password": "1234",
-  "role": "user"
+   "name": "Harsh Raj",
+   "email": "harsh@email.com",
+   "password": "1234",
+   "role": "user"
   },
 
   {
     "name": "Akshat",
     "email": "akshat07@gmail.com",
     "password": "12345",
-    "role": "user"
+    "role": "admin"
   }
 ]
