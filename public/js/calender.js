@@ -1,19 +1,88 @@
 console.log("MY EVENTS JS RUNNING");
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", function () {
 
-    const calendarEl = document.getElementById('calendar');
+    const calendarEl = document.getElementById("calendar");
+
     const filterCategory = document.getElementById("filterCategory");
     const filterType = document.getElementById("filterType");
     const filterTime = document.getElementById("filterTime");
 
     const modal = document.getElementById("eventModal");
+
+    // Modal elements (DO NOT remove from HTML)
     const modalTitle = document.getElementById("modalTitle");
-    const modalDetails = document.getElementById("modalDetails");
-    const closeModal = document.getElementById("closeModal");
+    const modalDate = document.getElementById("modalDate");
+    const modalCategory = document.getElementById("modalCategory");
+    const modalLocation = document.getElementById("modalLocation");
+    const modalOrganizer = document.getElementById("modalOrganizer");
+    const modalStatus = document.getElementById("modalStatus");
+    const modalSeats = document.getElementById("modalSeats");
+
     const manageBtn = document.getElementById("manageBtn");
+    const unregisterBtn = document.getElementById("unregisterBtn");
+    const closeBtn = document.getElementById("closeModal");
 
     let allEvents = [];
+
+    const calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: "dayGridMonth",
+        headerToolbar: {
+            left: "prev,next today",
+            center: "title",
+            right: "dayGridMonth,timeGridWeek,timeGridDay"
+        },
+        events: [],
+
+        eventDidMount: function(info) {
+
+    const dayCell = info.el.closest('.fc-daygrid-day');
+
+    if (dayCell) {
+        dayCell.style.backgroundColor = info.event.backgroundColor;
+        dayCell.style.color = "#ffffff";
+    }
+
+    // hide default badge
+    info.el.style.display = "none";
+},
+
+        eventClick: function (info) {
+
+            const e = info.event;
+
+            // Fill modal data (DO NOT replace modal HTML)
+            modalTitle.innerText = e.title;
+            modalDate.innerHTML = "<strong>Date:</strong> " + new Date(e.start).toLocaleString();
+            modalCategory.innerHTML = "<strong>Category:</strong> " + e.extendedProps.category;
+            modalLocation.innerHTML = "<strong>Location:</strong> " + e.extendedProps.location;
+            modalOrganizer.innerHTML = "<strong>Organizer:</strong> " + e.extendedProps.organizer;
+            modalStatus.innerHTML = "<strong>Status:</strong> " + e.extendedProps.status;
+
+            // Button actions
+            manageBtn.onclick = () => {
+                window.location.href = "my_events.html";
+            };
+
+            unregisterBtn.onclick = async () => {
+                await fetch(`/unregister/${e.id}`, { method: "DELETE" });
+                location.reload();
+            };
+
+            modal.classList.remove("hidden");
+        }
+    });
+
+    calendar.render();
+    loadEvents();
+
+    closeBtn.onclick = () => modal.classList.add("hidden");
+
+    window.onclick = function (e) {
+        if (e.target === modal) {
+            modal.classList.add("hidden");
+        }
+    };
 
     async function loadEvents() {
         const res = await fetch("/my-events/Harsh Raj");
@@ -24,25 +93,24 @@ document.addEventListener('DOMContentLoaded', function () {
             let today = new Date();
             let eventDate = new Date(event.date);
 
-            let color = "#007bff"; // registered default
+            let color = "#007bff";
 
-            if (event.createdBy === "Harsh Raj") {
-                color = "#28a745"; // green
-            }
+            if (event.createdBy === "Harsh Raj")
+                color = "#28a745";
 
-            if (eventDate < today) {
-                color = "#dc3545"; // red
-            }
+            if (eventDate < today)
+                color = "#dc3545";
 
-            if (eventDate.toDateString() === today.toDateString()) {
-                color = "#ff8c42"; // orange
-            }
+            if (eventDate.toDateString() === today.toDateString())
+                color = "#ff8c42";
 
             return {
                 id: event.id,
                 title: event.title,
                 start: event.date,
-                color: color,
+                backgroundColor: color,
+                borderColor: color,
+                textColor: "#ffffff",
                 extendedProps: {
                     category: event.category,
                     location: event.location,
@@ -52,54 +120,40 @@ document.addEventListener('DOMContentLoaded', function () {
             };
         });
 
+        calendar.removeAllEvents();
         calendar.addEventSource(allEvents);
         updateDashboardCounts();
-        startReminderCheck();
     }
 
-    const calendar = new FullCalendar.Calendar(calendarEl, {
-    initialView: 'dayGridMonth',
-    headerToolbar: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay'
-    },
-    events: [],
-
-    /* 🔥 ADD IT HERE */
-    eventDidMount: function(info) {
-        const dayCell = info.el.closest('.fc-daygrid-day');
-        if (dayCell) {
-            dayCell.style.backgroundColor = info.event.backgroundColor;
-        }
-    }
-
-});
-
-    calendar.render();
-    loadEvents();
-
-    closeModal.onclick = () => modal.classList.add("hidden");
-
-    /* FILTER LOGIC */
+    // FILTER LOGIC
     [filterCategory, filterType, filterTime].forEach(filter =>
         filter.addEventListener("change", applyFilters)
     );
 
     function applyFilters() {
+
         calendar.removeAllEvents();
 
         let filtered = allEvents.filter(e => {
 
-            let matchCategory = !filterCategory.value || e.extendedProps.category === filterCategory.value;
-            let matchType = !filterType.value || e.extendedProps.status.toLowerCase() === filterType.value;
+            let matchCategory =
+                !filterCategory.value ||
+                e.extendedProps.category === filterCategory.value;
+
+            let matchType =
+                !filterType.value ||
+                e.extendedProps.status.toLowerCase() === filterType.value;
 
             let now = new Date();
             let eventDate = new Date(e.start);
 
             let matchTime = true;
-            if (filterTime.value === "upcoming") matchTime = eventDate >= now;
-            if (filterTime.value === "past") matchTime = eventDate < now;
+
+            if (filterTime.value === "upcoming")
+                matchTime = eventDate >= now;
+
+            if (filterTime.value === "past")
+                matchTime = eventDate < now;
 
             return matchCategory && matchType && matchTime;
         });
@@ -107,32 +161,20 @@ document.addEventListener('DOMContentLoaded', function () {
         calendar.addEventSource(filtered);
     }
 
-    /* Dashboard Sync */
     function updateDashboardCounts() {
-        const upcoming = allEvents.filter(e => new Date(e.start) >= new Date()).length;
+        const upcoming = allEvents.filter(e =>
+            new Date(e.start) >= new Date()
+        ).length;
+
         const total = allEvents.length;
-        const registered = allEvents.filter(e => e.extendedProps.status === "Registered").length;
 
-        console.log("Total:", total);
-        console.log("Upcoming:", upcoming);
-        console.log("Registered:", registered);
-    }
+        const registered = allEvents.filter(e =>
+            e.extendedProps.status === "Registered"
+        ).length;
 
-    /* Reminder System */
-    function startReminderCheck() {
-        setInterval(() => {
-            let now = new Date();
-
-            allEvents.forEach(e => {
-                let eventTime = new Date(e.start);
-                let diff = eventTime - now;
-
-                if (diff > 0 && diff < 3600000) { // 1 hour
-                    alert("Reminder: " + e.title + " starts within 1 hour!");
-                }
-            });
-
-        }, 60000);
+        document.getElementById("totalEvents").textContent = total;
+        document.getElementById("upcomingEvents").textContent = upcoming;
+        document.getElementById("registeredEvents").textContent = registered;
     }
 
 });
