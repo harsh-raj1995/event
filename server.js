@@ -36,6 +36,32 @@ app.get("/events", (req, res) => {
     res.json(events);
 });
 
+app.get("/my-events/:email", (req, res) => {
+
+    const events = readData(eventsPath);
+    const users = readData(usersPath);
+
+    const userEmail = req.params.email;
+
+    const user = users.find(u => u.email === userEmail);
+
+    if (!user) {
+        return res.status(404).json({ message: "User not found" });
+    }
+
+    if (user.role === "admin") {
+        // Admin sees all events
+        return res.json(events);
+    }
+
+    // Normal user sees only their events
+    const userEvents = events.filter(
+        e => e.createdEmail === userEmail
+    );
+
+    res.json(userEvents);
+});
+
 //get one event specific
 app.get("/events/:id", (req, res) => {
     const events = readData(eventsPath);
@@ -104,12 +130,27 @@ app.delete("/participants/:id", (req, res) => {
     res.json({ message: "Participant removed" });
 });
 
-//dashboard route
-app.get("/dashboard/:user", (req, res) => {
+app.get("/dashboard/:email", (req, res) => {
+
     const events = readData(eventsPath);
     const participants = readData(participantsPath);
+    const users = readData(usersPath);
 
-    const userEvents = events.filter(e => e.createdBy == req.params.user);
+    const userEmail = req.params.email;
+
+    const user = users.find(u => u.email === userEmail);
+
+    let userEvents;
+
+    if (user.role === "admin") {
+        // 👑 Admin sees all events
+        userEvents = events;
+    } else {
+        // 👤 Normal user sees only their events
+        userEvents = events.filter(
+            e => e.createdEmail === userEmail
+        );
+    }
 
     const totalParticipants = participants.filter(p =>
         userEvents.some(e => e.id == p.eventId)
@@ -167,7 +208,8 @@ app.post("/login", (req, res) => {
         return res.json({
             status: "success",
             name: user.name,
-            email: user.email
+            email: user.email,
+            role: user.role
         });
     } else {
         return res.json({ status: "invalid" });

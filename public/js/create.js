@@ -9,7 +9,8 @@ form.addEventListener("submit", async (e) => {
         location: document.getElementById("location").value,
         date: document.getElementById("date").value,
         description: document.getElementById("description").value,
-        createdBy: "Harsh Raj" // later we make dynamic
+        createdBy: localStorage.getItem("userName"),
+        createdEmail: localStorage.getItem("userEmail")
     };
 
     const response = await fetch("/events", {

@@ -4,7 +4,15 @@ const container = document.getElementById("myEventsContainer");
 
 async function loadMyEvents() {
     try {
-        const res = await fetch("/my-events/Harsh Raj");
+        const userEmail = localStorage.getItem("userEmail");
+
+    if (!userEmail) {
+        alert("Please login first.");
+        window.location.href = "login.html";
+        return;
+    }
+
+    const res = await fetch(`/my-events/${userEmail}`);
         const events = await res.json();
 
         console.log("Fetched events:", events);

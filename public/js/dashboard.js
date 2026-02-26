@@ -9,10 +9,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 async function loadDashboard() {
-    const user = "Harsh Raj";
 
-    // Get dashboard stats
-    const dashRes = await fetch(`/dashboard/${user}`);
+    const userEmail = localStorage.getItem("userEmail");
+
+    if (!userEmail) {
+        alert("Please login first");
+        window.location.href = "login.html";
+        return;
+    }
+
+    // Dashboard stats
+    const dashRes = await fetch(`/dashboard/${userEmail}`);
     const dashData = await dashRes.json();
 
     document.getElementById("totalEvents").textContent =
@@ -21,13 +28,14 @@ async function loadDashboard() {
     document.getElementById("totalParticipants").textContent =
         dashData.totalParticipants;
 
-    // Get notifications count
+    // Notifications count
     const notifRes = await fetch("/notifications");
     const notifications = await notifRes.json();
 
     document.getElementById("totalAnnouncements").textContent =
         notifications.length;
 }
+
 async function loadDashboardExtras() {
 
     const eventsRes = await fetch("/events");

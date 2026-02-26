@@ -27,6 +27,7 @@ function loginUser(event) {
             // store logged-in user
             localStorage.setItem("userEmail", data.email);
             localStorage.setItem("userName", data.name);
+            localStorage.setItem("userRole", data.role);
 
             window.location.href = "Dashboard.html";
 
