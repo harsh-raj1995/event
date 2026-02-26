@@ -26,22 +26,28 @@ async function loadNotifications() {
 
             // Find event by ID
             const event = events.find(e => e.id == notification.eventId);
-
             const eventName = event ? event.title : "Unknown Event";
 
             const div = document.createElement("div");
             div.classList.add("notification");
 
-            div.innerHTML = `
-                <h4>📢 Announcement – ${eventName}</h4>
-                <p>${notification.message}</p>
-                <span class="time">
-                    ${new Date(notification.date).toLocaleString()}
-                </span>
-            `;
+             // 🔥 MAKE IT CLICKABLE
+            div.style.cursor = "pointer";
 
-            container.appendChild(div);
-        });
+            div.addEventListener("click", () => {
+            window.location.href = `event_detail.html?id=${notification.eventId}`;
+    });
+
+    div.innerHTML = `
+        <h4>📢 Announcement – ${eventName}</h4>
+        <p>${notification.message}</p>
+        <span class="time">
+            ${new Date(notification.date).toLocaleString()}
+        </span>
+    `;
+
+    container.appendChild(div);
+});
 
     } catch (error) {
         container.innerHTML = "<p>Failed to load notifications.</p>";
