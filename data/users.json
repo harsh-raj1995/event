@@ -21,5 +21,13 @@
     "email": "akshat07@gmail.com",
     "password": "12345",
     "role": "user"
+  },
+
+  {
+    "id": 4,
+    "name": "anup",
+    "email": "anup@gmail.com",
+    "password": "123456",
+    "role": "user"
   }
 ]
