@@ -1,5 +1,4 @@
-
-//basic server.js setup
+// ================= BASIC SERVER SETUP =================
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
@@ -14,14 +13,13 @@ app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
 
-//helper function
+// ================= FILE PATHS =================
 const eventsPath = path.join(__dirname, "data", "events.json");
 const participantsPath = path.join(__dirname, "data", "participants.json");
 const notificationsPath = path.join(__dirname, "data", "notifications.json");
-
-/* ================= LOGIN USERS PATH ================= */
 const usersPath = path.join(__dirname, "data", "users.json");
 
+// ================= HELPER FUNCTIONS =================
 function readData(filePath) {
     return JSON.parse(fs.readFileSync(filePath));
 }
@@ -30,46 +28,24 @@ function writeData(filePath, data) {
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 }
 
-//get all events
+// =====================================================
+// ================= EVENTS ROUTES =====================
+// =====================================================
+
+// ✅ 1️⃣ Get ALL events (All Events page)
 app.get("/events", (req, res) => {
     const events = readData(eventsPath);
     res.json(events);
 });
 
-app.get("/my-events/:email", (req, res) => {
-
-    const events = readData(eventsPath);
-    const users = readData(usersPath);
-
-    const userEmail = req.params.email;
-
-    const user = users.find(u => u.email === userEmail);
-
-    if (!user) {
-        return res.status(404).json({ message: "User not found" });
-    }
-
-    if (user.role === "admin") {
-        // Admin sees all events
-        return res.json(events);
-    }
-
-    // Normal user sees only their events
-    const userEvents = events.filter(
-        e => e.createdEmail === userEmail
-    );
-
-    res.json(userEvents);
-});
-
-//get one event specific
+// ✅ 2️⃣ Get ONE event by ID
 app.get("/events/:id", (req, res) => {
     const events = readData(eventsPath);
     const event = events.find(e => e.id == req.params.id);
     res.json(event);
 });
 
-//create event
+// ✅ 3️⃣ Create new event
 app.post("/events", (req, res) => {
     const events = readData(eventsPath);
 
@@ -80,7 +56,7 @@ app.post("/events", (req, res) => {
         location: req.body.location,
         date: req.body.date,
         description: req.body.description,
-        createdBy: req.body.createdBy
+        createdById: req.body.createdById   // 🔥 userId mapping
     };
 
     events.push(newEvent);
@@ -89,20 +65,86 @@ app.post("/events", (req, res) => {
     res.json(newEvent);
 });
 
-app.get("/my-events/:user", (req, res) => {
+// =====================================================
+// ================= MY EVENTS ROUTE ===================
+// =====================================================
+
+app.get("/my-events/:userId", (req, res) => {
+
     const events = readData(eventsPath);
-    const userEvents = events.filter(e => e.createdBy == req.params.user);
+    const users = readData(usersPath);
+
+    const userId = req.params.userId;
+    const user = users.find(u => u.id == userId);
+
+    if (!user) {
+        return res.status(404).json({ message: "User not found" });
+    }
+
+    // 👑 Admin sees all events
+    if (user.role === "admin") {
+        return res.json(events);
+    }
+
+    // 👤 Normal user sees only their events
+    const userEvents = events.filter(
+        e => e.createdById == userId
+    );
+
     res.json(userEvents);
 });
 
-//get participants of event
+// =====================================================
+// ================= DASHBOARD ROUTE ===================
+// =====================================================
+
+app.get("/dashboard/:userId", (req, res) => {
+
+    const events = readData(eventsPath);
+    const participants = readData(participantsPath);
+    const users = readData(usersPath);
+
+    const userId = req.params.userId;
+    const user = users.find(u => u.id == userId);
+
+    if (!user) {
+        return res.status(404).json({ message: "User not found" });
+    }
+
+    let userEvents;
+
+    if (user.role === "admin") {
+        userEvents = events;
+    } else {
+        userEvents = events.filter(
+            e => e.createdById == userId
+        );
+    }
+
+    const totalParticipants = participants.filter(p =>
+        userEvents.some(e => e.id == p.eventId)
+    ).length;
+
+    res.json({
+        totalEvents: userEvents.length,
+        totalParticipants
+    });
+});
+
+// =====================================================
+// ================= PARTICIPANTS ======================
+// =====================================================
+
+// Get participants of a specific event
 app.get("/participants/:eventId", (req, res) => {
     const participants = readData(participantsPath);
-    const filtered = participants.filter(p => p.eventId == req.params.eventId);
+    const filtered = participants.filter(
+        p => p.eventId == req.params.eventId
+    );
     res.json(filtered);
 });
 
-//add participants
+// Add participant
 app.post("/participants", (req, res) => {
     const participants = readData(participantsPath);
 
@@ -119,52 +161,24 @@ app.post("/participants", (req, res) => {
     res.json(newParticipant);
 });
 
-//delete participants
+// Delete participant
 app.delete("/participants/:id", (req, res) => {
     let participants = readData(participantsPath);
 
-    participants = participants.filter(p => p.id != req.params.id);
+    participants = participants.filter(
+        p => p.id != req.params.id
+    );
 
     writeData(participantsPath, participants);
 
     res.json({ message: "Participant removed" });
 });
 
-app.get("/dashboard/:email", (req, res) => {
-
-    const events = readData(eventsPath);
-    const participants = readData(participantsPath);
-    const users = readData(usersPath);
-
-    const userEmail = req.params.email;
-
-    const user = users.find(u => u.email === userEmail);
-
-    let userEvents;
-
-    if (user.role === "admin") {
-        // 👑 Admin sees all events
-        userEvents = events;
-    } else {
-        // 👤 Normal user sees only their events
-        userEvents = events.filter(
-            e => e.createdEmail === userEmail
-        );
-    }
-
-    const totalParticipants = participants.filter(p =>
-        userEvents.some(e => e.id == p.eventId)
-    ).length;
-
-    res.json({
-        totalEvents: userEvents.length,
-        totalParticipants
-    });
-});
+// =====================================================
+// ================= NOTIFICATIONS =====================
+// =====================================================
 
 app.post("/notifications", (req, res) => {
-    console.log("POST /notifications hit");
-    console.log(req.body);
 
     const notifications = readData(notificationsPath);
 
@@ -186,27 +200,24 @@ app.get("/notifications", (req, res) => {
     res.json(notifications);
 });
 
-app.get("/calender", (req, res) => {
-    res.sendFile(__dirname + "/public/calender.html");
-});
+// =====================================================
+// ================= LOGIN ROUTE =======================
+// =====================================================
 
-
-/* ================= UPDATED LOGIN ROUTE ================= */
 app.post("/login", (req, res) => {
     const users = readData(usersPath);
     const { email, password } = req.body;
 
-    // First check if email exists
     const user = users.find(u => u.email === email);
 
     if (!user) {
         return res.json({ status: "invalid" });
     }
 
-    // Then check if password matches
     if (user.password === password) {
         return res.json({
             status: "success",
+            id: user.id,
             name: user.name,
             email: user.email,
             role: user.role

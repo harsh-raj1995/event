@@ -10,14 +10,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function loadDashboard() {
 
-    const userEmail = localStorage.getItem("userEmail");
+   async function loadDashboard() {
 
-    if (!userEmail) {
+    const userId = localStorage.getItem("userId");
+
+    if (!userId) {
         alert("Please login first");
         window.location.href = "login.html";
         return;
     }
 
+    const dashRes = await fetch(`/dashboard/${userId}`);
+    const dashData = await dashRes.json();
+
+    document.getElementById("totalEvents").textContent =
+        dashData.totalEvents;
+
+    document.getElementById("totalParticipants").textContent =
+        dashData.totalParticipants;
+}
     // Dashboard stats
     const dashRes = await fetch(`/dashboard/${userEmail}`);
     const dashData = await dashRes.json();

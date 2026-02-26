@@ -85,7 +85,8 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     async function loadEvents() {
-        const res = await fetch("/my-events/Harsh Raj");
+        const userId = localStorage.getItem("userId");
+        const res = await fetch(`/my-events/${userId}`);
         const events = await res.json();
 
         allEvents = events.map(event => {
@@ -95,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             let color = "#007bff";
 
-            if (event.createdBy === "Harsh Raj")
+            if (event.createdById == userId)
                 color = "#28a745";
 
             if (eventDate < today)

@@ -4,15 +4,16 @@ const container = document.getElementById("myEventsContainer");
 
 async function loadMyEvents() {
     try {
-        const userEmail = localStorage.getItem("userEmail");
 
-    if (!userEmail) {
-        alert("Please login first.");
-        window.location.href = "login.html";
-        return;
-    }
+        const userId = localStorage.getItem("userId");
 
-    const res = await fetch(`/my-events/${userEmail}`);
+        if (!userId) {
+            alert("Please login first.");
+            window.location.href = "login.html";
+            return;
+        }
+
+        const res = await fetch(`/my-events/${userId}`);
         const events = await res.json();
 
         console.log("Fetched events:", events);
@@ -38,10 +39,7 @@ async function loadMyEvents() {
 
             const manageBtn = card.querySelector(".manage-btn");
 
-            console.log("Button found:", manageBtn);
-
             manageBtn.addEventListener("click", () => {
-                console.log("CLICK WORKING");
                 window.location.href = `/html/manage_event.html?id=${event.id}`;
             });
 
