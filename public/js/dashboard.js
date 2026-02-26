@@ -1,3 +1,13 @@
+document.addEventListener("DOMContentLoaded", () => {
+
+    // Temporary fallback values until backend loads
+    document.getElementById("totalEvents").textContent = "0";
+    document.getElementById("totalParticipants").textContent = "0";
+    document.getElementById("totalAnnouncements").textContent = "0";
+
+});
+
+
 async function loadDashboard() {
     const user = "Harsh Raj";
 
