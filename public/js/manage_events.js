@@ -1,6 +1,20 @@
+// ===============================
+// GLOBAL STORAGE FOR PARTICIPANTS
+// ===============================
+let allParticipants = [];
+
+
+// ===============================
+// LOAD EVENT + PARTICIPANTS
+// ===============================
 async function loadManageEvent() {
     const params = new URLSearchParams(window.location.search);
     const eventId = params.get("id");
+
+    if (!eventId) {
+        alert("No event ID found in URL");
+        return;
+    }
 
     // Fetch event info
     const eventRes = await fetch(`/events/${eventId}`);
@@ -12,11 +26,23 @@ async function loadManageEvent() {
     const participantsRes = await fetch(`/participants/${eventId}`);
     const participants = await participantsRes.json();
 
+    // Store full list globally
+    allParticipants = participants;
+
+    // Display all participants initially
+    displayParticipants(allParticipants);
+}
+
+
+// ===============================
+// DISPLAY PARTICIPANTS FUNCTION
+// ===============================
+function displayParticipants(participants) {
     const container = document.getElementById("participantsContainer");
     container.innerHTML = "";
 
     if (participants.length === 0) {
-        container.innerHTML = "<p>No participants yet.</p>";
+        container.innerHTML = "<p>No participants found.</p>";
         return;
     }
 
@@ -43,47 +69,75 @@ async function loadManageEvent() {
                 method: "DELETE"
             });
 
-            loadManageEvent(); // reload list
+            loadManageEvent(); // Reload list after deletion
         });
 
         container.appendChild(row);
     });
 }
 
-loadManageEvent();
 
-const announcementForm = document.getElementById("announcementForm");
+// ===============================
+// LIVE SEARCH FUNCTION
+// ===============================
+const searchInput = document.getElementById("searchParticipants");
 
-announcementForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
+if (searchInput) {
+    searchInput.addEventListener("input", function (e) {
+        const value = e.target.value.toLowerCase();
 
-    const params = new URLSearchParams(window.location.search);
-    const eventId = new URLSearchParams(window.location.search).get("id");
+        const filtered = allParticipants.filter(participant =>
+            participant.name.toLowerCase().includes(value) ||
+            participant.email.toLowerCase().includes(value)
+        );
 
-if (!eventId) {
-    alert("No event ID found in URL");
-    return;
+        displayParticipants(filtered);
+    });
 }
 
-    const message = document.getElementById("announcementText").value;
 
-    const res = await fetch("/notifications", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            eventId: eventId,
-            message: message
-        })
+// ===============================
+// ANNOUNCEMENT FORM
+// ===============================
+const announcementForm = document.getElementById("announcementForm");
+
+if (announcementForm) {
+    announcementForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const eventId = new URLSearchParams(window.location.search).get("id");
+
+        if (!eventId) {
+            alert("No event ID found in URL");
+            return;
+        }
+
+        const message = document.getElementById("announcementText").value;
+
+        const res = await fetch("/notifications", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                eventId: eventId,
+                message: message
+            })
+        });
+
+        if (res.ok) {
+            document.getElementById("announcementMessage").textContent =
+                "Announcement sent successfully!";
+            announcementForm.reset();
+        } else {
+            document.getElementById("announcementMessage").textContent =
+                "Failed to send announcement.";
+        }
     });
+}
 
-    if (res.ok) {
-        document.getElementById("announcementMessage").textContent =
-            "Announcement sent successfully!";
-        announcementForm.reset();
-    } else {
-        document.getElementById("announcementMessage").textContent =
-            "Failed to send announcement.";
-    }
-});
+
+// ===============================
+// INITIAL LOAD
+// ===============================
+loadManageEvent();
