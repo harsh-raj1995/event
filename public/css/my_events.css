@@ -50,6 +50,7 @@ header {
 /* ================= CARD ================= */
 /* ================= EVENT CARD ================= */
 .event-card {
+    position: relative;   /* IMPORTANT */
     padding: 25px;
     border-radius: 18px;
     background: rgba(255, 255, 255, 0.06);
@@ -57,9 +58,8 @@ header {
     border: 1px solid rgba(255,255,255,0.12);
     box-shadow: 0 10px 30px rgba(0,0,0,0.4);
     transition: all 0.35s ease;
-    
+    padding-bottom: 50px;
 }
-
 .event-card:hover {
     transform: translateY(-8px);
     border-color: #ffaa00;
@@ -97,12 +97,17 @@ header {
 .event-card:hover h3 {
     color: #ffaa00;
 }
-
+.manage-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
 /* ================= FOOTER ================= */
 .card-footer {
-    margin-top: 15px;
+    margin-top: 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;  /* align button to right */
+    align-items: center;
 }
 
 /* ================= BUTTON ================= */
