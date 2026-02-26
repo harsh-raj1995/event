@@ -2,7 +2,7 @@
   {
    "id": 1,
    "name": "Pranad",
-   "email": "pav@email.com",
+   "email": "pav@gmail.com",
    "password": "pav123",
    "role": "admin"
   },
@@ -10,7 +10,7 @@
   {
    "id": 2,
    "name": "Harsh Raj",
-   "email": "harsh@email.com",
+   "email": "harsh@gmail.com",
    "password": "1234",
    "role": "admin"
   },
