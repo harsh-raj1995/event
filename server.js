@@ -105,8 +105,9 @@ app.get("/dashboard/:userId", (req, res) => {
     const notifications = readData(notificationsPath);
     const users = readData(usersPath);
 
-    const userId = parseInt(req.params.userId);
-    const user = users.find(u => u.id === userId);
+    const userId = req.params.userId;
+
+    const user = users.find(u => String(u.id) === String(userId));
 
     if (!user) {
         return res.status(404).json({ message: "User not found" });
@@ -117,23 +118,20 @@ app.get("/dashboard/:userId", (req, res) => {
     if (user.role === "admin") {
         userEvents = events;
     } else {
-        // 🔥 Match events using email (since events store createdBy as email)
+        // 🔥 FIXED HERE
         userEvents = events.filter(
-            e => e.createdBy === user.email
+            e => String(e.createdById) === String(user.id)
         );
     }
 
-    // Get event IDs created by user
-    const userEventIds = userEvents.map(e => e.id);
+    const userEventIds = userEvents.map(e => String(e.id));
 
-    // Count participants in user's events
     const totalParticipants = participants.filter(p =>
-        userEventIds.includes(Number(p.eventId))
+        userEventIds.includes(String(p.eventId))
     ).length;
 
-    // 🔥 Count notifications only for user's events
     const totalAnnouncements = notifications.filter(n =>
-        userEventIds.includes(Number(n.eventId))
+        userEventIds.includes(String(n.eventId))
     ).length;
 
     res.json({
@@ -142,6 +140,7 @@ app.get("/dashboard/:userId", (req, res) => {
         totalAnnouncements
     });
 });
+
 // =====================================================
 // ================= PARTICIPANTS ======================
 // =====================================================
