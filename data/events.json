@@ -81,12 +81,146 @@
     "createdById": "3"
   },
   {
-    "id": 1772283989495,
-    "title": "qwedfghjkl",
-    "category": "dfghm,",
-    "location": "sdfghm,.wertyuio",
-    "date": "2026-03-14",
-    "description": "qwerthjkacvbnmrtyuio",
-    "createdById": "1"
+    "id": 1773000000001,
+    "title": "Google Developer Student Clubs HackFest 2026",
+    "category": "Hackathon",
+    "location": "Chandigarh University",
+    "date": "2026-04-10",
+    "description": "Join the biggest student developer hackathon.\n\n• 24-hour coding challenge\n• Open to all branches\n• Mentorship from Google experts\n\nPrizes worth ₹3,00,000.\n\nRegister soon!",
+    "createdById": "2"
+  },
+  {
+    "id": 1773000000002,
+    "title": "Startup Pitch Day 2026",
+    "category": "Entrepreneurship",
+    "location": "Incubation Center, CU",
+    "date": "2026-04-05",
+    "description": "Pitch your startup ideas to real investors.\n\n• Funding opportunities\n• Networking with founders\n• Expert feedback\n\nTurn your idea into reality.",
+    "createdById": "2"
+  },
+  {
+    "id": 1773000000003,
+    "title": "Cyber Security Bootcamp",
+    "category": "Workshop",
+    "location": "Online",
+    "date": "2026-04-02",
+    "description": "Learn ethical hacking & cybersecurity fundamentals.\n\n• Hands-on labs\n• Real-world attack simulations\n• Certificate provided",
+    "createdById": "3"
+  },
+  {
+    "id": 1773000000004,
+    "title": "Web Development Masterclass",
+    "category": "Workshop",
+    "location": "Block D2 Lab",
+    "date": "2026-04-08",
+    "description": "Master full stack development.\n\n• HTML, CSS, JS, React\n• Live project building\n• Resume-ready skills",
+    "createdById": "3"
+  },
+  {
+    "id": 1773000000005,
+    "title": "Tech Quiz Competition",
+    "category": "Competition",
+    "location": "Seminar Hall B3",
+    "date": "2026-04-12",
+    "description": "Test your technical knowledge.\n\n• MCQ rounds\n• Rapid fire\n• Exciting prizes",
+    "createdById": "3"
+  },
+  {
+    "id": 1773000000006,
+    "title": "AI & Machine Learning Summit",
+    "category": "Conference",
+    "location": "A1 Auditorium",
+    "date": "2026-04-15",
+    "description": "Explore the future of AI.\n\n• Industry speakers\n• Live demos\n• Networking opportunities",
+    "createdById": "3"
+  },
+  {
+    "id": 1773000000007,
+    "title": "Gaming Tournament 2026",
+    "category": "Gaming",
+    "location": "Student Center",
+    "date": "2026-04-18",
+    "description": "Compete in gaming battles.\n\n• BGMI, Valorant, FIFA\n• Team & solo events\n• Cash prizes",
+    "createdById": "3"
+  },
+  {
+    "id": 1773000000008,
+    "title": "Photography Contest",
+    "category": "Creative Event",
+    "location": "Campus Wide",
+    "date": "2026-04-20",
+    "description": "Show your photography skills.\n\n• Theme-based competition\n• Best shots win prizes\n• Exhibition opportunity",
+    "createdById": "3"
+  },{
+    "id": 1773000000101,
+    "title": "Code Clash 2.0",
+    "category": "Coding Competition",
+    "location": "Block D3 Lab",
+    "date": "2026-04-22",
+    "description": "Compete with the best coders.\n\n• DSA challenges\n• Time-based rounds\n• Exciting prizes",
+    "createdById": 3
+  },
+  {
+    "id": 1773000000102,
+    "title": "UI/UX Design Workshop",
+    "category": "Workshop",
+    "location": "Design Lab, CU",
+    "date": "2026-04-25",
+    "description": "Learn modern UI/UX principles.\n\n• Figma hands-on\n• Design thinking\n• Portfolio building",
+    "createdById": 2
+  },
+  {
+    "id": 1773000000103,
+    "title": "Blockchain & Web3 Meetup",
+    "category": "Tech Talk",
+    "location": "Seminar Hall A2",
+    "date": "2026-04-28",
+    "description": "Dive into blockchain technology.\n\n• Smart contracts\n• Crypto trends\n• Networking session",
+    "createdById": 3
+  },
+  {
+    "id": 1773000000104,
+    "title": "DevOps Bootcamp",
+    "category": "Workshop",
+    "location": "Online",
+    "date": "2026-05-01",
+    "description": "Master DevOps tools.\n\n• Docker & Kubernetes\n• CI/CD pipelines\n• Real-world deployment",
+    "createdById": 3
+  },
+  {
+    "id": 1773000000105,
+    "title": "Open Mic Night",
+    "category": "Cultural Event",
+    "location": "Student Activity Center",
+    "date": "2026-05-03",
+    "description": "Show your talent.\n\n• Singing, poetry, stand-up\n• Open stage for all\n• Fun & entertainment",
+    "createdById": 3
+  },
+  {
+    "id": 1773000000106,
+    "title": "Data Science Challenge",
+    "category": "Competition",
+    "location": "Block C Lab",
+    "date": "2026-05-05",
+    "description": "Solve real-world datasets.\n\n• ML models\n• Data analysis\n• Certificates & prizes",
+    "createdById": 2
+  },
+  {
+    "id": 1773000000107,
+    "title": "Fitness & Yoga Camp",
+    "category": "Health & Wellness",
+    "location": "Sports Ground",
+    "date": "2026-05-07",
+    "description": "Stay fit and active.\n\n• Morning yoga sessions\n• Fitness training\n• Health tips",
+    "createdById": 2
+  },
+  {
+    "id": 1773000000108,
+    "title": "Robotics Competition",
+    "category": "Tech Competition",
+    "location": "Block B Workshop Area",
+    "date": "2026-05-10",
+    "description": "Build and compete with robots.\n\n• Line follower challenge\n• Obstacle race\n• Cash prizes",
+    "createdById": 2
   }
 ]
